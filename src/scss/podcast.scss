@@ -1,0 +1,119 @@
+.podcast {
+    // переменная нужна для компонента эквалайзера
+    --ctx-bg: var(--main-bg);
+
+    display: flex;
+
+    &__cover-wrap {
+        flex-shrink: 0;
+        width: 55px;
+        height: 55px;
+        margin-right: 1rem;
+    }
+
+    &__cover {
+        display: block;
+
+        width: 100%;
+        height: auto;
+    }
+
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        flex-grow: 1;
+        max-width: calc(100% - 55px - 16px - 20px);
+
+        font-family: $ff-b;
+    }
+
+    &__titles {
+        align-self: flex-start;
+
+        flex-shrink: 0;
+        width: calc(100% - 60px - 16px);
+        margin-right: 16px;
+
+        @media (min-width: 1025px) {
+            white-space: nowrap;
+
+            overflow: hidden;
+        }
+    }
+
+    &__title {
+        font-family: $ff-d;
+        font-size: 1rem;
+        line-height: rem(20);
+    }
+
+    &__info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__show {
+        margin-right: .5rem;
+
+        font-size: rem(14);
+        line-height: rem(18);
+    }
+
+    &__date {
+        font-size: rem(12);
+        line-height: 1rem;
+        color: var(--gray);
+    }
+
+    &__time {
+        align-self: flex-start;
+
+        flex-shrink: 0;
+        width: 60px;
+        padding-right: 2px;
+        margin-top: 10px;
+
+        font-size: rem(14);
+        line-height: 1rem;
+        text-align: right;
+        color: var(--gray);
+    }
+
+    &__progressbar {
+        margin-top: 3px;
+    }
+
+    &__download {
+        display: flex;
+        align-items: flex-start;
+
+        width: 20px;
+
+        text-decoration: none;
+        color: var(--gray);
+
+        &:hover,
+        &:focus {
+            color: var(--red);
+        }
+        &:active {
+            color: var(--d-red);
+        }
+    }
+
+    &__icon {
+        margin-top: 12px;
+        margin-left: auto;
+    }
+}
+
+.podcast-list {
+
+    &__item {
+        margin-bottom: rem(28);
+    }
+}

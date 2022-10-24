@@ -1,0 +1,143 @@
+.main-playlist {
+    display: none;
+
+    position: fixed;
+    top: 90px;
+    left: 20.83%;
+    right: 0;
+    z-index: 9;
+
+    box-sizing: border-box;
+    height: calc(100vh - 90px - 90px);
+
+    opacity: 0;
+    background-color: var(--main-bg);
+    overflow: auto;
+
+    transform: translateY(100%);
+    transition:
+        opacity .3s,
+        transform .3s;
+
+    @media (max-width: 991px) {
+        top: 55px;
+        left: 0;
+
+        height: calc(100vh - 55px - 80px);
+    }
+
+    &_visible {
+        display: block;
+    }
+
+    &_appeared {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+    &__inner {
+        width: 100%;
+        padding-top: 19px;
+        padding-bottom: 40px;
+        margin: 0;
+    }
+
+    &__title {
+        margin-bottom: 15px;
+    }
+
+    &__form {
+        justify-content: flex-end;
+
+        margin-top: -25px;
+        margin-bottom: 15px;
+
+        @media (max-width: 991px) {
+            display: none;
+        }
+    }
+
+    &__sub-title {
+        margin-bottom: 12px;
+
+        font-size: rem(20);
+
+        @media (max-width: 991px) {
+            display: none;
+        }
+    }
+
+    &__full-link {
+        display: block;
+
+        box-sizing: border-box;
+        width: 240px;
+        height: 40px;
+        margin: auto;
+        margin-top: 27px;
+        border: 1px solid currentColor;
+
+        font-size: 1rem;
+        line-height: 38px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        color: var(--blue);
+
+        border-radius: 5px;
+
+        &:hover,
+        &:focus {
+            color: var(--text);
+        }
+        &:active {
+            color: var(--d-blue);
+        }
+
+        @media (min-width: 992px) {
+            display: none;
+        }
+    }
+}
+
+.track-onair {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 991px) {
+        margin-bottom: 20px;
+    }
+
+    &__cover {
+        flex-shrink: 0;
+        max-width: 158px;
+        height: auto;
+        margin-right: 22px;
+
+        @media (max-width: 991px) {
+            width: 100px;
+            height: auto;
+            margin-right: 7px;
+        }
+    }
+
+    &__artist {
+        margin-bottom: 4px;
+
+        font-size: 2rem;
+        font-weight: bold;
+
+        @media (max-width: 991px) {
+            font-size: rem(18);
+        }
+    }
+
+    &__title {
+        font-size: rem(28);
+
+        @media (max-width: 991px) {
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+mixin breadcrumps(arr = [])
+    - const lastIndex = arr.length - 1;
+
+    ul.breadcrumps.list-reset
+        li.breadcrumps__item
+            a.breadcrumps__link(href="/")
+                | Главная
+        each item, index in arr
+            li.breadcrumps__item
+                if index === lastIndex
+                    span.breadcrumps__link.breadcrumps__link_active
+                        =item
+                else
+                    a.breadcrumps__link(href="#")
+                        =item

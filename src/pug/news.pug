@@ -1,0 +1,58 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Новости"
+    - isInner = true
+
+append content
+    +breadcrumps(["Новости"])
+
+    .content-header
+        h1.title.content-header__title
+            | Новости
+
+        .content-header__controls
+            .content-header__search
+                +local-search({
+                    mixin: "js-news-local-search",
+                    selector: ".news-list__item[data-string]",
+                })
+            .content-header__filter
+                input.date-time-component__hidden-input(type="hidden" data-items=".news-list__item[data-date]")
+                +date-time-component({ isReset: true })
+
+        .content-header__tags
+            +tags({
+                items: [
+                    { text: "Все", attrs: { "data-all": true, }, },
+                    { text: "NRJ Radio", attrs: { "data-keyword": "nrj radio" } },
+                    { text: "Звезды", isActive: true, attrs: { "data-keyword": "звезды" } },
+                    { text: "Интервью", attrs: { "data-keyword": "интервью" } },
+                    { text: "Розыгрыши", attrs: { "data-keyword": "розыгрыши" } },
+                    { text: "Стиль жизни", attrs: { "data-keyword": "стиль жизни" } },
+                    { text: "Новости кино", attrs: { "data-keyword": "новости кино" } },
+                    { text: "Важная информация", attrs: { "data-keyword": "важная информация" } },
+                    { text: "Рецензии", attrs: { "data-keyword": "рецензии" } },
+                    { text: "Премии", attrs: { "data-keyword": "премии" } },
+                    { text: "Музыка", attrs: { "data-keyword": "музыка" } },
+                ],
+                asBtn: true,
+                includeResetBtn: true,
+            })
+
+    - const titles = ["Меган Фокс и Machine Gun Kelly на съемках клипа", "Новинка кинематографа – «Легенда о Зелёной пепеге» уже завтра!!11", "Новость", "Вышел полноценный трейлер второго сезона «Американской истории ужасов»"]
+    - const dates = ["21.07.2022", "22.07.2022"]
+    - let n = 0
+    .news-list#js-news-list
+        while n < 8
+            - const title = titles[ Math.round( Math.random() * (titles.length - 1) ) ]
+            - const date = dates[ Math.round( Math.random() * (dates.length - 1) ) ]
+            .news-list__item(data-string=title.toLocaleLowerCase() data-date=date)
+                +news-preview({
+                    img: `img/news-${Math.round( Math.random() * 2 + 1 )}.jpg`,
+                    title,
+                    date,
+                })
+            - n++
+
+append scripts

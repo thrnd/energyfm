@@ -1,0 +1,28 @@
+mixin video({ isTickingTitles = false, img, width = 344, height = 190, title, desc, isNew, date, mixin } = {})
+    .video(class=`${mixin}${isTickingTitles ? " video_view_ticking-titles" : ""}`)
+        - const roll = Math.round( Math.random() )
+        .video__cover-wrap.play-btn-wrap(class=`${isNew ? "new-label" : ""}`)
+            img.video__cover(src=img alt="asd" width=width height=height)
+            +play-btn(class="js-video-btn play-btn_s_lg play-btn-wrap__btn" data-video="<iframe class='iframe-wrap__video' src='https://www.youtube.com/embed/OLab02ErE2Q?autoplay=1' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>")
+        .video__inner
+            if roll === 1
+                .video__title(class=`${isTickingTitles ? "player-titles" : ""}`)
+                    a.video__link(href="#")
+                        = title
+            else
+                .video__title(class=`${isTickingTitles ? "player-titles" : ""}`)
+                    = title
+            if desc || date
+                .video__desc-wrap(class=`${isTickingTitles ? "player-titles" : ""}`)
+                    if desc
+                        .video__desc
+                            | !{desc}
+                            - const yaroll = Math.round( Math.random() )
+                            if yaroll === 1
+                                |  &  
+                            if yaroll === 1
+                                a.video__link(href="#")
+                                    | Yet another
+                    if date
+                        .video__date
+                            = date

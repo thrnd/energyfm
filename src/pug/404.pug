@@ -1,0 +1,16 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Страница не найдена"
+    - isInner = true
+
+append content
+    .sys-page
+        .sys-page__code
+            | 404
+        h1.sys-page__title
+            | Такой страницы нет :(
+        a.sys-page__link.btn(href="/")
+            | На главную
+
+append scripts

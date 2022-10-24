@@ -1,0 +1,47 @@
+mixin pic(arr)
+    picture
+        - var mainIndex = 0
+        - var n = 0
+        while n < arr.length
+            - var img = arr[n]
+            - var name = img.name
+            - var ext = img.ext
+            - var type = ""
+            - var media = img.media
+            - var alt = img.alt
+            - var isDefault = img.isDefault || false
+
+            if isDefault
+                - mainIndex = n
+            - n++
+
+            case img.ext.toLowerCase()
+                when "jpg"
+                when "jpeg"
+                    - type = "image/jpeg"
+                when "webp"
+                    - type = "image/webp"
+                when "png"
+                    - type = "image/png"
+                when "svg"
+                    - type = "image/svg+xml"
+
+            source(srcset=`img/${name}.${ext}` type=`${type}` media=`${media}`)
+
+        - var img = arr[mainIndex]
+        - var name = img.name
+        - var ext = img.ext
+        - var type = ""
+        - var media = img.media
+        - var alt = img.alt
+        case img.ext.toLowerCase()
+                when "jpg"
+                when "jpeg"
+                    - type = "image/jpeg"
+                when "webp"
+                    - type = "image/webp"
+                when "png"
+                    - type = "image/png"
+                when "svg"
+                    - type = "image/svg+xml"
+        img(src=`img/${name}.${ext}` alt=alt)&attributes(attributes)

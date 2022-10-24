@@ -1,0 +1,17 @@
+mixin news-preview({ mixin, title, img, date })
+    .news-preview(class=mixin)
+        a.news-preview__img-wrap(href="#")
+            img.news-preview__img.lazy(data-src=img alt=title width="164" height="164")
+        .news-preview__inner
+            h3.news-preview__title(title=title)
+                a.news-preview__link(href="#")
+                    = title
+            .news-preview__date
+                = date
+            - const tags = ["Интервью", "Розыгрыши пепежного приза впервые в истории", "Стиль жизни", "Новости кино", "Важная информация", "Рецензии", "Премии", ]
+            - let n = Math.round( Math.random() * (tags.length - 1) + 1 )
+            .news-tags.news-preview__tags
+                while n >= 0
+                    .news-tags__item
+                        = tags[ Math.round( Math.random() * (tags.length - 1) ) ]
+                    - n--

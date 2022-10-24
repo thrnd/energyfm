@@ -1,0 +1,52 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Треки"
+    - isInner = true
+
+append content
+    +breadcrumps(["Новые треки"])
+
+    .content-header
+        h1.title.content-header__title
+            | Новые треки
+
+        .content-header__controls
+            .content-header__search
+                +local-search({
+                    mixin: "local-search_s_lg js-tracks-local-search",
+                    selector: ".track-list__item[data-string]",
+                    text: "Поиск по названию и исполнителю",
+                })
+
+    - const trackTitles = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+    - const artists = ["Milky Chance", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+    - let n = 0
+    .new-tracks-slider.swiper-container
+        .track-list.track-list_view_new-tracks.track-list_view_slider.swiper-wrapper
+            while n < 5
+                .track-list__item.swiper-slide
+                    +track({
+                        img: `img/track-${Math.round( Math.random() + 1)}.jpg`,
+                        title: trackTitles[Math.round( Math.random() * (trackTitles.length - 1) )],
+                        artist: artists[Math.round( Math.random() * (artists.length - 1) )],
+                        mixin: n === 0 ? "track_view_main" : "",
+                        isNew: true,
+                    })
+                - n++
+
+    - n = 0
+    .track-list#js-new-tracks-list
+        while n < 12
+            - const title = trackTitles[Math.round( Math.random() * (trackTitles.length - 1) )]
+            .track-list__item(data-string=title.toLocaleLowerCase())
+                +track({
+                    img: `img/track-${Math.round( Math.random() + 1)}.jpg`,
+                    title,
+                    artist: artists[Math.round( Math.random() * (artists.length - 1) )],
+                })
+            - n++
+
+    #js-new-tracks-loader
+
+append scripts

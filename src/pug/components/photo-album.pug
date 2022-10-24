@@ -1,0 +1,12 @@
+mixin photo-album({ isNew, mixin, img, title, } = {})
+    .photo-album(class=mixin)
+        img.photo-album__cover.lazy(data-src=img alt="" width="" height="")
+        .photo-album__count
+            //- | 12
+            | 228
+        if isNew
+            .new-label.photo-album__new-label
+        a.photo-album__link(href="#")
+            span.photo-album__title
+                span.photo-album__text
+                    = title

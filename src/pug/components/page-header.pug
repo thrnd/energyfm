@@ -1,0 +1,191 @@
+header.page-header(class=`${isInner ? "page-header_view_inner-page": ""}`)
+    .container.page-header__inner
+        button.open-menu-btn(type="button" aria-label="Открыть меню")
+
+        a.page-header__logo(href="/" aria-label="На главную")
+            img.page-header__logo-img(src="img/logo.svg" alt="Логотип Like FM" width="52" height="68")
+
+        .menu-wrap
+            .menu-wrap__header
+                button.js-city-popup-btn.city-popup-btn(type="button" aria-label="Сменить город вещания")
+                    +svg("map-point")(class="city-popup-btn__icon" width="18" height="20")
+                    span.city-popup-btn__text
+                        | Москва 104.2
+
+                button.menu-wrap__close(type="button" aria-label="Закрыть меню")
+
+            .menu-wrap__inner
+                .menu-wrap__menu-container
+                    ul.menu.list-reset.page-header__menu
+                        li.menu__item.menu__item_mobile-only
+                            a.menu__link(href="/")
+                                | Главная
+                        li.menu__item
+                            button.menu__btn(type="button")
+                                | Программы
+                            .menu__inner
+                                ul.submenu.list-reset.menu__submenu
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_1")
+                                            | Шоу с Чёрным Перцем
+                                            span.submenu__desc
+                                                | DJ Саймон, Катя Калинина
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_2")
+                                            | Шоу JOYстики
+                                            span.submenu__desc
+                                                | Богдан Кантемиров, Роман Миронов
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_3")
+                                            | NRJ Hot 30
+                                            span.submenu__desc
+                                                | DJ Катя Бодрова
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_4")
+                                            | NRJ Globaldance
+                                            span.submenu__desc
+                                                | DJ Sidorkov
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_5")
+                                            | NRJ News
+                                            span.submenu__desc
+                                                | Андрей Фролов, Женя Романова
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_6")
+                                            | Spinnin' session
+                                .menu__widget.menu__widget_visible.menu__widget_n_1(data-widget-group="programs")
+                                    img.menu__img.lazy(data-src="img/show-1.jpg" alt="Обложка программы \"Шоу с Чёрным Перцем\"")
+                                .menu__widget.menu__widget_n_2(data-widget-group="programs")
+                                    img.menu__img.lazy(data-src="img/show-2.jpg" alt="Обложка программы \"Шоу с Чёрным Перцем\"")
+                                .menu__widget.menu__widget_n_3(data-widget-group="programs")
+                                    img.menu__img.lazy(data-src="img/show-1.jpg" alt="Обложка программы \"Шоу с Чёрным Перцем\"")
+                                .menu__widget.menu__widget_n_4(data-widget-group="programs")
+                                    img.menu__img.lazy(data-src="img/show-2.jpg" alt="Обложка программы \"Шоу с Чёрным Перцем\"")
+                                .menu__widget.menu__widget_n_5(data-widget-group="programs")
+                                    img.menu__img.lazy(data-src="img/show-1.jpg" alt="Обложка программы \"Шоу с Чёрным Перцем\"")
+                                .menu__widget.menu__widget_n_6(data-widget-group="programs")
+                                    img.menu__img.lazy(data-src="img/show-2.jpg" alt="Обложка программы \"Шоу с Чёрным Перцем\"")
+                        li.menu__item
+                            button.menu__btn(type="button")
+                                | Музыка
+                            .menu__inner
+                                ul.submenu.list-reset.menu__submenu
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Новые треки
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Клипы
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | NRJ Hot 30
+                                            span.submenu__desc
+                                                | DJ Катя Бодрова
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Исполнители
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Что за песня?
+                                .menu__widget.menu__widget_t_form.menu__widget_visible
+                                    form.song-search(action="#" method="GET")
+                                        .song-search__title
+                                            | Найти песню в эфире
+                                        .song-search__inner
+                                            label.label.label_input-size_sm.song-search__label
+                                                input.input.input_s_sm.label__input.song-search__input(type="text" name="date" required)
+                                                span.label__text
+                                                    | Выберите дату и время
+                                            +date-time-component({ mixin: "date-time-component_view_song-search song-search__datetime-picker" })
+                        li.menu__item
+                            button.menu__btn(type="button")
+                                | Фото и видео
+                            .menu__inner
+                                ul.submenu.list-reset.menu__submenu(style="--row-count:3")
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_7")
+                                            | Фото
+                                    li.submenu__item
+                                        a.submenu__link(href="#" data-widget=".menu__widget_n_8")
+                                            | Видео
+                                .menu__widget.menu__widget_visible.menu__widget_n_7(data-widget-group="photo")
+                                    .preview-widget
+                                        - let n = 0
+                                        - let isNew
+                                        while n < 8
+                                            - isNew = Math.round( Math.random() ) === 1
+                                            a.preview-widget__item(class=`${isNew ? "new-label new-label_s_sm" : ""}` href="#")
+                                                img.preview-widget__img.lazy(data-src=`img/photo-${Math.round( Math.random() * 2 + 1 )}.jpg` width="90" height="90")
+                                            - n++
+                                .menu__widget.menu__widget_s_sm.menu__widget_n_8(data-widget-group="photo")
+                                    .preview-widget
+                                        - n = 0
+                                        while n < 4
+                                            - isNew = Math.round( Math.random() ) === 1
+                                            a.preview-widget__item.preview-widget__item_s_wide(class=`${isNew ? "new-label new-label_s_sm" : ""}` href="#")
+                                                img.preview-widget__img.lazy(data-src=`img/video-widget-${Math.round( Math.random() + 1 )}.jpg` width="163" height="90")
+                                            - n++
+                        li.menu__item
+                            a.menu__link(href="/trend.html")
+                                | Подкасты
+                        li.menu__item
+                            button.menu__btn(type="button")
+                                | О нас
+                            .menu__inner
+                                ul.submenu.list-reset.menu__submenu
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Контакты
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Реклама на радио
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Новости
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Команда
+                                    li.submenu__item
+                                        a.submenu__link(href="#")
+                                            | Награды
+                                .menu__widget.menu__widget_visible
+                                    .header-contact
+                                        +svg("phone")(class="header-contact__icon" width="15" height="20")
+                                        | Номер телефона редакции
+                                        a.header-contact__link(href="tel:+74959373367")
+                                            | + 7 (495) 937-33-67
+                                    .header-contact
+                                        +svg("mail")(class="header-contact__icon" width="18" height="14")
+                                        | Электронная почта
+                                        a.header-contact__link(href="mailto:copyright@gpmradio.ru")
+                                            | copyright@gpmradio.ru
+                        li.menu__item
+                            a.menu__link(href="#")
+                                | Акции
+                        li.menu__item.menu__item_mobile-only
+                            a.menu__link(href="#")
+                                | Прямой эфир из студии
+
+                    button.js-toggle-theme.toggle-theme-btn.page-header__toggle-theme-btn(type="button" aria-label="Переключиться на темную тему")
+                        +svg("sun")(class="toggle-theme-btn__icon" width="20" height="20")
+                        +svg("moon")(class="toggle-theme-btn__icon toggle-theme-btn__icon_t_moon" width="17" height="17")
+
+                +social-links(class="page-header__socials")
+
+        - const roll = Math.round( Math.random() )
+        if roll === 1
+            button.js-popup-btn.nrj-stories(type="button" data-popup-target=".nrj-stories-popup")
+                img.nrj-stories__img(src="img/nrj-stories.png" alt="NRJ Stories" width="137" height="137")
+        else
+            .nrj-stories-ph
+
+        button.js-city-popup-btn.city-popup-btn.city-popup-btn_view_desktop(type="button" aria-label="Сменить город вещания")
+            span.city-popup-btn__text
+                | Москва 104.2
+            +svg("arrow")(class="city-popup-btn__icon" width="8" height="15")
+
+.menu-wrap__popup-coverup
+.page-header__scroll-detector
+
+include ./city-popup
+include ./nrj-stories

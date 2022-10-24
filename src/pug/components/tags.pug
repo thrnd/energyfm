@@ -1,0 +1,19 @@
+mixin tags({ items, asBtn = false, includeResetBtn = false })
+    - const maxItems = 6;
+    - const length = items.length;
+    ul.tags.list-reset(data-url="/index__news-load")
+        each tag, index in items
+            li.tags__item(class=`${index >= maxItems ? "tags__item_hidden" : ""}`)
+                if asBtn
+                    button.tags__btn(class=`${tag.isActive ? "tags__btn_active" : ""}` type="button")&attributes(tag.attrs)
+                        = tag.text
+                else
+                    a.tags__btn(class=`${tag.isActive ? "tags__btn_active" : ""}` href=`${tag.link || "#"}`)
+                        = tag.text
+        if length > maxItems
+            li.tags__item
+                button.tags__btn.tags__btn_t_more
+                    | Ещё #{length - maxItems}
+    if includeResetBtn
+        button.tags__reset(type="button")
+            | Сбросить все

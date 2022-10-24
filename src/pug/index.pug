@@ -1,0 +1,288 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Главная"
+
+append content
+    h1.visually-hidden
+        | Радио ENERGY FM
+
+    .main-slider.swiper-container
+        .swiper-wrapper
+            - let n = 0
+            while n < 4
+                - const isEven = n % 2 === 1
+                a.main-slider__slide.swiper-slide(href="#")
+                    img.main-slider__img.lazy(data-src=`img/banner-${isEven ? 2 : 1}.jpg` alt="asd" width="640" height="416")
+                    img.main-slider__img.main-slider__img_for_tablet.lazy(data-src=`img/banner-${isEven ? 2 : 1}--w--704.jpg` alt="asd" width="704" height="394")
+                    img.main-slider__img.main-slider__img_for_desktop.lazy(data-src=`img/banner-${isEven ? 2 : 1}--w--1144.jpg` alt="asd" width="1144" height="430")
+                    //- +pic([{
+                            name: `banner-${isEven ? 2 : 1}`,
+                            ext: "jpg",
+                            media: "(max-width: 767px)",
+                            alt: "banner",
+                            isDefault: true
+                        }, {
+                            name: `banner-${isEven ? 2 : 1}--w--1144`,
+                            ext: "jpg",
+                            media: "(min-width: 1025px)",
+                            alt: "banner"
+                        }, {
+                            name: `banner-${isEven ? 2 : 1}--w--704`,
+                            ext: "jpg",
+                            media: "(min-width: 768px)",
+                            alt: "banner",
+                            isDefault: true
+                        }])(class="main-slider__img" width="640" height="416")
+                - n++
+        .main-slider__controls
+            button.main-slider__btn.main-slider__btn_t_prev(type="button")
+                +svg("arrow")(class="main-slider__icon" width="8" height="14")
+            .main-slider__pagination
+            button.main-slider__btn.main-slider__btn_t_next(type="button")
+                +svg("arrow")(class="main-slider__icon" width="8" height="14")
+
+    - const trackTitles = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+    - const artists = ["Milky Chance", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+    - n = 0
+    .index-page-grid
+        section.content-block.content-block_view_index-page.index-page-grid__el.index-page-grid__el_s_lg
+            .content-block__header
+                h2.title.content-block__title
+                    | Новые треки
+                a.content-block__link(href="#")
+                    | Все треки
+
+            .new-tracks-slider.swiper-container
+                .track-list.track-list_view_slider.track-list_view_index-page.swiper-wrapper
+                    while n < 10
+                        .track-list__item.swiper-slide
+                            +track({
+                                isTickingTitles: true,
+                                mixin: "track_view_ticking-titles",
+                                img: `img/track-${Math.round( Math.random() + 1)}.jpg`,
+                                title: trackTitles[Math.round( Math.random() * (trackTitles.length - 1) )],
+                                artist: artists[Math.round( Math.random() * (artists.length - 1) )],
+                            })
+                        - n++
+
+        section.content-block.index-page-grid__el
+            .content-block__header
+                h2.title.content-block__title
+                    | Hot 30 NRJ
+                a.content-block__link(href="#")
+                    | Весь чарт
+
+            .hot-30.hot-30_view_index-page
+                .hot-30__header
+                    .hot-30__title
+                        | Сегодня
+                    .hot-30__title
+                        | На прошлой неделе
+                - n = 0
+                - const pos = ["chart-pos_growed", "chart-pos_falled", ""]
+                - const titles = ["Down By The River Down By The River", "Goosebumps", ]
+                while n < 7
+                    - const _pos = Math.round( Math.random() * 3 )
+                    .hot-30__item
+                        .chart-pos.hot-30__pos(class=pos[n])
+                            = ++n
+                            .chart-pos__icon
+                            span.visually-hidden
+                                | трек поднялся в чарте
+                        +player({
+                            mixin: "player_view_hot30 hot-30__player",
+                            img: "img/cover-sm.jpg",
+                            trackData: {
+                                title: `<a class="player__link" href="#">${titles[Math.round( Math.random() )]}</a>`,
+                                subtitle: `<a class="player__link" href="#">${trackTitles[Math.round( Math.random() * (trackTitles.length - 1) )]}</a> & <a class="player__link" href="#">YAPPO</a>`,
+                            },
+                            btnOpts: {
+                                isLoaderSm: true,
+                            },
+                        })
+                        - const className = _pos === 2 ? "chart-pos_new" : pos[_pos]
+                        .chart-pos.chart-pos_past.hot-30__prev-pos(class=className)
+                            if _pos === 2
+                                | NEW
+                            else
+                                = Math.round( Math.random() * 29 + 1 )
+                            if _pos !== 2
+                                .chart-pos__icon
+                            span.visually-hidden
+                                | на прошлой неделе трек поднялся в чарте
+
+    .content-block.index-media-slider.swiper-container
+        .swiper-wrapper
+            - n = 0
+            while n < 3
+                a.index-media-slider__slide.swiper-slide(href="#")
+                    +pic([{
+                        name: "ads--sm",
+                        ext: "jpg",
+                        media: "(max-width: 767px)",
+                        alt: "banner",
+                        isDefault: true,
+                    }, {
+                        name: "ads",
+                        ext: "jpg",
+                        media: "(min-width: 768px)",
+                        alt: "banner",
+                    }])(class="index-media-slider__img" width="704" height="413")
+                - n++
+        button.index-media-slider__btn.index-media-slider__btn_t_prev(type="button")
+            +svg("arrow")(class="index-media-slider__icon" width="12" height="21")
+        button.index-media-slider__btn.index-media-slider__btn_t_next(type="button")
+            +svg("arrow")(class="index-media-slider__icon" width="12" height="21")
+
+    section.content-block
+        .content-block__header
+            h2.title.content-block__title
+                | Фото и видео
+            a.content-block__link(href="#")
+                | Все фото
+            a.content-block__link(href="#")
+                | Все видео
+
+        .js-video-tags.content-block__tags
+            +tags({ items: [
+                { text: "Все", isActive: true, },
+                { text: "Концерты" },
+                { text: "Интервью" },
+            ]})
+
+        - const videoTitles = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+        - const videoDates = ["01.06.2022", "01.05.2022"]
+        - const desc = ["Galibri & Mavik Galibri & Mavik Galibri & Mavik Galibri & Mavik Galibri & Mavik", ""]
+        .js-video-slider.index-slider.swiper-container
+            .swiper-wrapper
+                .index-slider__slide.swiper-slide
+                    - n = 0
+                    while n < 5
+                        - const title = videoTitles[ Math.round( Math.random() * (videoTitles.length - 1) ) ];
+                        - const date = videoDates[ Math.round( Math.random() ) ];
+                        .index-slider__video
+                            +video({
+                                isTickingTitles: true,
+                                mixin: n == 0 ? "video_view_index-slider" : "",
+                                img: `img/video-${ Math.round(Math.random() * 2) + 1 }.jpg`,
+                                title,
+                                date,
+                            })
+                        - n++
+                .index-slider__slide.swiper-slide
+                    - n = 0
+                    while n < 5
+                        - const title = videoTitles[ Math.round( Math.random() * (videoTitles.length - 1) ) ];
+                        - const date = videoDates[ Math.round( Math.random() ) ];
+                        .index-slider__video
+                            +video({
+                                isTickingTitles: true,
+                                mixin: n == 0 ? "video_view_index-slider" : "",
+                                img: `img/video-${ Math.round(Math.random() * 2) + 1 }.jpg`,
+                                title,
+                                date,
+                            })
+                        - n++
+            button.index-slider__btn.index-slider__btn_t_prev(type="button")
+                +svg("arrow")(class="index-slider__icon" width="12" height="21")
+            button.index-slider__btn.index-slider__btn_t_next(type="button")
+                +svg("arrow")(class="index-slider__icon" width="12" height="21")
+
+    section.content-block
+        .content-block__header
+            h2.title.content-block__title
+                | Клипы
+            a.content-block__link(href="#")
+                | Все клипы
+
+        .js-clips-slider.index-slider.swiper-container
+            .swiper-wrapper
+                .index-slider__slide.swiper-slide
+                    - n = 0
+                    while n < 5
+                        - const title = videoTitles[ Math.round( Math.random() * (videoTitles.length - 1) ) ];
+                        - const date = videoDates[ Math.round( Math.random() ) ];
+                        .index-slider__video
+                            +video({
+                                isTickingTitles: true,
+                                mixin: n == 0 ? "video_view_index-slider" : "",
+                                img: `img/video-${ Math.round(Math.random() * 2) + 1 }.jpg`,
+                                title,
+                                desc: "Travis Scott Travis Scott Travis Scott Travis Scott Travis Scott Travis Scott Travis Scott Travis Scott",
+                            })
+                        - n++
+                .index-slider__slide.swiper-slide
+                    - n = 0
+                    while n < 5
+                        - const title = videoTitles[ Math.round( Math.random() * (videoTitles.length - 1) ) ];
+                        - const date = videoDates[ Math.round( Math.random() ) ];
+                        .index-slider__video
+                            +video({
+                                isTickingTitles: true,
+                                mixin: n == 0 ? "video_view_index-slider" : "",
+                                img: `img/video-${ Math.round(Math.random() * 2) + 1 }.jpg`,
+                                title,
+                                date,
+                            })
+                        - n++
+            button.index-slider__btn.index-slider__btn_t_prev(type="button")
+                +svg("arrow")(class="index-slider__icon" width="12" height="21")
+            button.index-slider__btn.index-slider__btn_t_next(type="button")
+                +svg("arrow")(class="index-slider__icon" width="12" height="21")
+
+    section.content-block
+        .content-block__header
+            h2.title.content-block__title
+                | Новости
+            a.content-block__link(href="#")
+                | Все новости
+
+        .js-news-tags.content-block__tags
+            +tags({
+                items: [
+                    { text: "Все" },
+                    { text: "NRJ Radio" },
+                    { text: "Звезды", isActive: true, },
+                    { text: "Интервью" },
+                    { text: "Розыгрыши" },
+                    { text: "Стиль жизни" },
+                ],
+                asBtn: true,
+                includeResetBtn: true,
+            })
+
+        - const newsTitles = ["Меган Фокс и Machine Gun Kelly на съемках клипа", "Новинка кинематографа – «Легенда о Зелёной пепеге» уже завтра!!11", "Новость", "Вышел полноценный трейлер второго сезона «Американской истории ужасов»"]
+        - const dates = ["21.07.2022", "22.07.2022"]
+        .js-news-slider.index-slider.index-slider_view_news.swiper-container
+            .swiper-wrapper
+                .index-slider__slide.swiper-slide
+                    - n = 0
+                    while n < 6
+                        - const title = newsTitles[ Math.round( Math.random() * (newsTitles.length - 1) ) ]
+                        - const date = dates[ Math.round( Math.random() * (dates.length - 1) ) ]
+                            +news-preview({
+                                mixin: "index-slider__news-item",
+                                img: `img/news-${Math.round( Math.random() * 2 + 1 )}.jpg`,
+                                title,
+                                date,
+                            })
+                        - n++
+                .index-slider__slide.swiper-slide
+                    - n = 0
+                    while n < 6
+                        - const title = newsTitles[ Math.round( Math.random() * (newsTitles.length - 1) ) ]
+                        - const date = dates[ Math.round( Math.random() * (dates.length - 1) ) ]
+                            +news-preview({
+                                mixin: "index-slider__news-item",
+                                img: `img/news-${Math.round( Math.random() * 2 + 1 )}.jpg`,
+                                title,
+                                date,
+                            })
+                        - n++
+            button.index-slider__btn.index-slider__btn_t_prev(type="button")
+                +svg("arrow")(class="index-slider__icon" width="12" height="21")
+            button.index-slider__btn.index-slider__btn_t_next(type="button")
+                +svg("arrow")(class="index-slider__icon" width="12" height="21")
+
+    append scripts

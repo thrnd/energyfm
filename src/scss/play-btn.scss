@@ -1,0 +1,192 @@
+// по ум. кнопка располагается поверх картинки
+// и появляется при наведении на эту картинку
+// модификатор _always-visible используем для вставки обычной кнопки (которая видна всегда)
+// модификатор _s_lg используем для бОльшей по размеру иконки
+
+.play-btn {
+    --icon-width:           14px;
+    --icon-height:          14px;
+    --loader-size:          9px;
+    --loader-gap:           5px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    border: 0;
+
+    font-family: $ff;
+    font-size: rem(18);
+    line-height: inherit;
+    font-weight: 500;
+    color: var(--white);
+
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+        color: var(--white);
+    }
+    &:focus {
+
+        @media (min-width: 1025px) {
+            color: var(--white);
+        }
+    }
+
+    &.play {
+        opacity: 0;
+    }
+
+    &_always-visible.play {
+        opacity: 1;
+    }
+
+    &_s {
+        &_lg {
+            --icon-width: 31px;
+            --icon-height: 25px;
+        }
+    }
+
+    &_disabled {
+        color: var(--l2-gray) !important;
+
+        cursor: default;
+    }
+
+    &__text {
+        margin-right: 8px;
+
+        pointer-events: none;
+
+        &_t_play {
+            display: none;
+        }
+    }
+
+    &.play &__text_t_play {
+        display: block;
+    }
+    &.play &__text_t_pause {
+        display: none;
+    }
+
+    &__icon {
+        display: none;
+
+        width: var(--icon-width);
+        height: var(--icon-height);
+
+        fill: currentColor;
+        pointer-events: none;
+    }
+
+    &.play &__icon_t_pause,
+    &.pause &__icon_t_play {
+        display: none;
+    }
+    &.play &__icon_t_play,
+    &.pause &__icon_t_pause {
+        display: block;
+    }
+
+    &__loader {
+        align-self: center;
+        width: 35px;
+    }
+
+    &.play &__loader,
+    &.pause &__loader {
+        display: none;
+    }
+}
+
+.loader {
+    --circle-size: 7px;
+    --circle-gap:  7px;
+    --circle-bg: var(--white);
+
+    position: relative;
+
+    display: flex;
+
+    width: calc( var(--circle-size) * 3 + var(--circle-gap) * 2 );
+
+    pointer-events: none;
+
+    &_s_sm {
+        --circle-size: 5px;
+        --circle-gap:  4px;
+    }
+
+    &__el {
+        flex-shrink: 0;
+        width: var(--circle-size);
+        height: var(--circle-size);
+        margin-right: var(--circle-gap);
+
+        background-color: var(--circle-bg);
+        border-radius: 50%;
+
+        animation-name: loader-move;
+        animation-duration: .5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+
+        &:first-child,
+        &:last-child {
+            position: absolute;
+            top: 0;
+
+            margin: 0;
+
+            animation-name: loader-grow;
+        }
+        &:first-child {
+            left: 0;
+        }
+        &:last-child {
+            right: 0;
+
+            animation-direction: reverse;
+        }
+    }
+}
+
+.play-btn-wrap {
+    position: relative;
+
+    &__btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        color: var(--white);
+
+        background-color: var(--black-30);
+        transition: opacity .15s;
+
+        &:hover,
+        &:focus,
+        &.pause {
+            color: var(--white);
+        }
+        &:active {
+            color: var(--red);
+        }
+    }
+
+    &:hover &__btn,
+    &:focus-within &__btn {
+        opacity: 1;
+    }
+}

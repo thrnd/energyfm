@@ -1,0 +1,21 @@
+mixin track({ isTickingTitles = false, img, title, artist, mixin, isNew })
+    .track(class=mixin)
+        .play-btn-wrap.track__cover-wrap(class=`${isNew ? "new-label new-label_mobile-sm" : ""}`)
+            - const roll = Math.round( Math.random() );
+            - const _img = roll === 1 ? img : "img/placeholder.svg"
+            img.track__cover(src=_img alt=`Обложка трека \"${title}\"`)
+            +play-btn(class="play-btn_s_lg play-btn-wrap__btn track__play-btn")
+        .track__inner.eq-wrap
+            .equalizer.equalizer_s_lg.eq-wrap__eq
+                .equalizer__bar.equalizer__bar_n_1
+                .equalizer__bar.equalizer__bar_n_2
+                .equalizer__bar.equalizer__bar_n_3
+                .equalizer__bar.equalizer__bar_n_4
+            .track__title(class=`${mixin === "track_view_main" ? "eq-wrap_s_lg": ""}${isTickingTitles ? " player-titles" : ""}`)
+                a.track__link.eq-wrap__placement(href="#")
+                    = title
+            if artist
+                - const _artist = `${artist}${roll === 1 ? " & Yet another" : ""}`
+                .track__artist(class=`${isTickingTitles ? " player-titles" : ""}`)
+                    a.track__link(href="#")
+                        = _artist

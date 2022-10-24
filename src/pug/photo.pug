@@ -1,0 +1,60 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Фото"
+    - isInner = true
+
+append content
+    +breadcrumps(["Фото"])
+
+    .content-header
+        h1.title.content-header__title
+            | Фото
+
+        .content-header__controls
+            .content-header__search
+                +local-search({
+                    mixin: "js-photo-local-search",
+                    selector: ".album-list__item[data-string]",
+                })
+            .content-header__filter
+                input.date-time-component__hidden-input(type="hidden" data-items=".album-list__item[data-date]")
+                +date-time-component({ isReset: true })
+
+        .content-header__tags
+            +tags({ items: [
+                { text: "Все", isActive: true, },
+                { text: "Шоу с Черным Перцем" },
+                { text: "Joyстики" },
+                { text: "NRJNews" },
+                { text: "Пародии" },
+                { text: "Интервью" },
+                { text: "Шоу с Черным Перцем" },
+                { text: "Joyстики" },
+                { text: "NRJNews" },
+                { text: "Пародии" },
+                { text: "Интервью" },
+            ]})
+
+    - const photoTitles = ["2021 - Artik & Asti на Радио ENERGY", "2022 - альбом", "2021 - Фотоальбом с интересными гостями и не без пепеги на Радио ENERGY", ]
+    - const photoDates = ["27.07.2022", "28.07.2022", ]
+    #js-photo-list.album-list
+        - let n = 0;
+        - let title;
+        - let date;
+        while n < 10
+            - title = photoTitles[ Math.round( Math.random() * (photoTitles.length - 1) ) ];
+            - date = photoDates[ Math.round( Math.random() * (photoDates.length - 1) ) ];
+            .album-list__item(
+                class=`${n < 2 ? "album-list__item_s_lg" : ""}`
+                data-string=title.toLocaleLowerCase()
+                data-date=date
+            )
+                +photo-album({
+                    isNew: n < 2,
+                    img: n < 2 ? `img/album-${n + 1}.jpg` : "img/photo-1.jpg",
+                    title,
+                })
+                - n++
+
+append scripts

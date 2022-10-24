@@ -1,0 +1,14 @@
+mixin pagination
+    .pagination
+        a.pagination__link.pagination__link_t_prev(href="#" title="Предыдущая страница")
+            span.visually-hidden
+                | Предыдущая страница
+        span.pagination__link.pagination__link_active
+            | 1
+        - let n = 2
+        while n < 6
+            a.pagination__link(href="#")
+                = n++
+        a.pagination__link.pagination__link_t_next(href="#" title="Следующая страница")
+            span.visually-hidden
+                | Следующая страница

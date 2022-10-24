@@ -1,0 +1,82 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Меган Фокс и Machine Gun Kelly на съемках клипа"
+    - isInner = true
+
+append content
+    +breadcrumps(["Новости", "Меган Фокс и Machine Gun Kelly на съемках клипа"])
+
+    article.news-article
+        h1.title.news-article__title
+            | Меган Фокс и Machine Gun Kelly на съемках клипа
+
+        .news-article__inner
+            .news-tags.news-article__tags
+                .news-tags__item
+                    | Звезды
+                .news-tags__item
+                    | Музыка
+
+            p
+                | Google назвал десять самых важных для россиян событий, произошедших в 2021-м году, опираясь на запросы интернет-пользователей в поисковике.
+            blockquote
+                | Google назвал десять самых важных для россиян событий, произошедших в 2021-м году, опираясь на запросы интернет-пользователей в поисковике.
+            p
+                | На первом месте оказался чемпионат Европы по футболу, в котором наша сборная остановилась на <a href="#">групповом этапе</a>, в последнем матче разгромно уступив Дании. Победителем турнира стала национальная команда Италии.
+            img(src="img/news-pic.jpg" alt="" width="" height="")
+
+            h2
+                | Подзаголовок
+            p
+                | Google назвал десять самых важных для россиян событий, произошедших в 2021-м году, опираясь на запросы интернет-пользователей в поисковике.
+            p
+                | На первом месте оказался чемпионат Европы по футболу, в котором наша сборная остановилась на групповом этапе, в последнем матче разгромно уступив Дании. Победителем турнира стала национальная команда Италии.
+
+        .like-share.like-share_view_news
+            button.like-btn.like-share__like(type="button")
+                +svg("like")(class="like-btn__icon" width="19" height="18")
+                span.like-btn__likes
+                    | 10k
+            .share.like-share__share
+                .share__title.like-share__title
+                    | Поделиться
+                +social-links({ mixin: "like-share__list social-links_desktop_vertical", isShare: true })
+
+    - const titles = ["Меган Фокс и Machine Gun Kelly на съемках клипа", "Новинка кинематографа – «Легенда о Зелёной пепеге» уже завтра!!11", "Новость", "Вышел полноценный трейлер второго сезона «Американской истории ужасов»"]
+    - const dates = ["21.07.2022", "22.07.2022"]
+    - let n = 0
+    h2.title
+        | Читайте также
+    .more-news-slider.swiper-container
+        .news-list.news-list_view_slider.swiper-wrapper
+            while n < 5
+                - const title = titles[ Math.round( Math.random() * (titles.length - 1) ) ]
+                - const date = dates[ Math.round( Math.random() * (dates.length - 1) ) ]
+                .news-list__item.swiper-slide
+                    +news-preview({
+                        mixin: "news-preview_view_mobile-sm",
+                        img: `img/news-${Math.round( Math.random() * 2 + 1 )}.jpg`,
+                        title,
+                        date,
+                    })
+                    - n++
+
+    h2.title
+        | Новости партнеров
+    .more-news-slider.swiper-container
+        .news-list.news-list_view_slider.swiper-wrapper
+            - n = 0
+            while n < 5
+                - const title = titles[ Math.round( Math.random() * (titles.length - 1) ) ]
+                - const date = dates[ Math.round( Math.random() * (dates.length - 1) ) ]
+                .news-list__item.swiper-slide
+                    +news-preview({
+                        mixin: "news-preview_view_mobile-sm",
+                        img: `img/news-${Math.round( Math.random() * 2 + 1 )}.jpg`,
+                        title,
+                        date,
+                    })
+                    - n++
+
+append scripts

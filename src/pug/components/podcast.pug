@@ -1,0 +1,23 @@
+mixin podcast({ mixin = "", img, title, show, date, time, })
+    - const roll = Math.round( Math.random() );
+    - const _img = roll === 1 ? "img/placeholder.svg" : img;
+    .podcast
+        .play-btn-wrap.podcast__cover-wrap
+            img.podcast__cover.lazy(data-src=_img width="55" height="55" alt="")
+            +play-btn(class="play-btn-wrap__btn")
+        .podcast__inner
+            .podcast__titles
+                .player-titles.podcast__title
+                    = title
+                .player-titles.podcast__info
+                    .podcast__show
+                        = show
+                    .podcast__date
+                        = date
+            .podcast__time
+                = time
+            .progress-bar.progress-bar_view_podcast.podcast__progressbar
+                .progress-bar__back(data-volume-line="nrj-main-player" style="width:50%")
+                .progress-bar__thumb(data-volume-button="nrj-main-player" style="margin-left:50%")
+        a.podcast__download(href="#" download)
+            +svg("download")(class="podcast__icon" width="14" height="14")

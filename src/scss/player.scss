@@ -1,0 +1,168 @@
+// модификатор _view_mini навешивается в мини-версии главного плеера
+// модификатор _view_live навешивается в блоке "Сейчас в эфире" в главном плеере
+// модификатор _view_main-player навешивается на компоненты в главном плеере
+// модификатор _view_hot30 навешивается на компоненты в списке чарта
+// модификатор _view_playlist-onair навешивается jsом на странице плейлиста
+.player {
+    // переменная нужна для компонента эквалайзера
+    --ctx-bg: var(--main-bg);
+
+    display: flex;
+    align-items: flex-start;
+
+    font-size: 1rem;
+    line-height: 1.25em;
+
+    @media (min-width: 1025px) {
+        align-items: center;
+    }
+
+    &_view_main-player {
+
+        @media (min-width: 1025px) {
+            font-size: rem(14);
+        }
+    }
+
+    &_view_mini {
+
+        @media (min-width: 1025px) {
+            writing-mode: vertical-rl;
+        }
+    }
+
+    &__cover-wrap {
+        flex-shrink: 0;
+        width: 40px;
+        margin-right: 12px;
+    }
+    &_view_mini &__cover-wrap {
+        width: 48px;
+
+        @media (min-width: 1025px) {
+            width: 60px;
+            margin: 0;
+        }
+    }
+    &_view_live &__cover-wrap {
+        width: 60px;
+
+        @media (min-width: 1025px) {
+            width: 40px;
+        }
+    }
+    &_view_hot30 &__cover-wrap {
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            width: 50px;
+        }
+    }
+    &_view_playlist-onair &__cover-wrap {
+        width: 70px;
+        margin-right: 16px;
+
+        @media (min-width: 768px) {
+            width: 92px;
+        }
+    }
+
+    &__cover {
+        display: block;
+
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+
+        overflow: hidden;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+
+        flex-grow: 1;
+        padding: 0;
+        border: 0;
+
+        font-size: inherit;
+        line-height: inherit;
+        text-align: left;
+        color: inherit;
+
+        background-color: transparent;
+
+        @media (min-width: 1025px) {
+            overflow: hidden;
+        }
+
+        &_t_button {
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                opacity: 0.75;
+            }
+            &:active {
+                color: var(--gray);
+
+                opacity: 1;
+            }
+        }
+    }
+    &_view_mini &__inner {
+        overflow: hidden;
+
+        @media (min-width: 1025px) {
+            padding-top: 24px;
+            order: -1;
+
+            transform: rotate(180deg);
+        }
+    }
+    &_view_playlist-onair &__inner {
+        position: relative;
+        align-self: flex-end;
+
+        padding-top: rem(26);
+
+        @media (min-width: 768px) {
+            padding-top: 0;
+        }
+    }
+
+    &__title {
+        font-family: $ff-d;
+    }
+    &_view_mini &__title {
+        margin-bottom: 0.3em;
+    }
+    &_view_main-player &__title {
+
+        @media (min-width: 1025px) {
+            margin-bottom: rem(3);
+        }
+    }
+    &_view_playlist-onair &__title {
+        font-size: rem(18);
+    }
+
+    &__subtitle {
+        font-family: $ff-b;
+    }
+    &_view_main-player &__subtitle {
+        opacity: 0.5;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover,
+        &:focus {
+            color: var(--red);
+        }
+        &:active {
+            color: var(--d-red);
+        }
+    }
+}

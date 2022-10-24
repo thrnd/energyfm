@@ -1,0 +1,7 @@
+mixin single-webpic(opt)
+    - var name = opt.name
+    - var ext = opt.ext || "jpg"
+    - var alt = opt.alt
+    picture
+        source(srcset=`img/${name}.webp` type="image/webp")
+        img(src=`img/${name}.${ext}` alt=alt)&attributes(attributes)

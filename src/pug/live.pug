@@ -1,0 +1,94 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Онлайн трансляция"
+    - isInner = true
+
+append content
+    +breadcrumps(["Онлайн трансляция"])
+
+    h1.visually-hidden
+        | Онлайн трансляция ENERGY FM
+
+    .live-content
+        .live-content__dj
+            img.live-content__dj-photo(src="img/dj.jpg" alt="DJ Лера Симачёва" width="60" height="60")
+            .live-content__desc
+                .live-content__title
+                    | В студии
+                .live-content__dj-name
+                    | DJ Лера Симачёва
+        .live-content__hi
+            img.live-content__hi-img(src="img/hi-live.svg" alt="" width="56" height="76")
+            .live-content__hi-inner
+                .live-content__hi-title
+                    | И тебе привет!
+                .live-content__hi-subtitle
+                    | Дела отлично, настроение - супер!
+
+        .live-content__ticker
+            .live-ticker
+                .live-ticker__inner
+                    .live-ticker__el
+                        b
+                            | Тебе не ответили? 
+                        | Без паники! Просто DJ занят!
+                    .live-ticker__el
+                        b
+                            | Песни не ставим! 
+                        a(href="/new-tracks")
+                            | Слушай, смотри, выбирай 
+                        | любую!
+                    .live-ticker__el
+                        b
+                            | Веди себя прилично! 
+                        | Спам, флуд, мат — БАН!
+                    .live-ticker__el
+                        b
+                            | Что играло? Кто поёт? 
+                        a(href="/playlist")
+                            | Смотри здесь!
+                .live-ticker__inner.live-ticker__inner_doubler
+                    .live-ticker__el
+                        b
+                            | Тебе не ответили? 
+                        | Без паники! Просто DJ занят!
+                    .live-ticker__el
+                        b
+                            | Песни не ставим! 
+                        a(href="/new-tracks")
+                            | Слушай, смотри, выбирай 
+                        | любую!
+                    .live-ticker__el
+                        b
+                            | Веди себя прилично! 
+                        | Спам, флуд, мат — БАН!
+                    .live-ticker__el
+                        b
+                            | Что играло? Кто поёт? 
+                        a(href="/playlist")
+                            | Смотри здесь!
+
+        .live-content__inner
+            .live-content__video-wrap
+                iframe(src="//ok.ru/videoembed/3431897505379" allow="autoplay" allowfullscreen="" width="754" height="424" frameborder="0")
+
+            .live-content__footer
+                .live-content__online
+                    | Online: 
+                    span.live-content__online-text
+                        | 38 712
+                .live-content__contacts
+                    | ЙОУ! Пиши сюда, чтобы мы прочитали:
+                    +social-links({
+                        isPerson: true,
+                        mixin: "social-links_color_red live-content__socials",
+                    })
+                .live-content__likes
+                    button.like-btn(type="button")
+                        +svg("like")(class="like-btn__icon" width="19" height="18")
+                        span.like-btn__likes
+                            | 10k
+
+
+append scripts

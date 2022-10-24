@@ -1,0 +1,162 @@
+footer.page-footer
+    .page-footer__inner.container
+        .page-footer__item.page-footer__item_t_contacts
+            .footer-contact
+                .footer-contact__title
+                    | Электронная почта
+                a.footer-contact__link(href="mailto:copyright@gpmradio.ru")
+                    | copyright@gpmradio.ru
+            .footer-contact
+                .footer-contact__title
+                    | Телефон редакции
+                a.footer-contact__link(href="tel:+74959373367")
+                    | + 7 (495) 937-33-67
+            .footer-contact
+                .footer-contact__title
+                    | Другой телефон
+                a.footer-contact__link(href="tel:+74959373367")
+                    | + 7 (495) 937-33-67
+            .footer-contact
+                .footer-contact__title
+                    | Другой телефон
+                a.footer-contact__link(href="tel:+74959373367")
+                    | + 7 (495) 937-33-67
+
+        .page-footer__item.page-footer__item_t_form
+            form.form.footer-form(action="#" method="post")
+                .form__inner
+                    .form__title
+                        | Оставьте заявку
+                    .form__desc
+                        | Заполните форму и мы свяжемся с вами в ближайшее время!
+                    label.label.form__item
+                        input.input.label__input.footer-form__input(type="text" required)
+                        span.label__text
+                            | Имя
+                    label.label.form__item
+                        input.input.label__input.footer-form__input(type="email" required)
+                        span.label__text
+                            | Email
+                    label.label.form__item
+                        input.input.label__input.footer-form__input(name="fields[phone]" type="tel")
+                        span.label__text
+                            | Номер телефона
+                    label.label.form__item
+                        textarea.input.input_t_textarea.label__input.footer-form__input(required)
+                        span.label__text
+                            | Ваш вопрос
+                    .form__rules
+                        | Отправляя нам ваши данные, вы соглашаетесь с <a href="/privacy-policy">политикой конфиденциальности</a>
+                    button.btn.form__submit.footer-form__submit(type="submit")
+                        | Отправить
+                .form__response
+                    +svg("success")(class="form__icon" width="32" height="32")
+                    .form__title
+                    .form__desc
+                    button.form__response-btn(type="button")
+
+        .page-footer__item.page-footer__item_t_menu
+            ul.footer-menu.list-reset
+                li.footer-menu__item
+                    span.footer-menu__link
+                        | Программы
+                    ul.footer-submenu.list-reset
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Шоу с Черным Перцем
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Шоу JOYстики
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | NRJ Hot 30
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | NRJ Globaldance
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | NRJ News
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Spinnin’ session
+                li.footer-menu__item
+                    span.footer-menu__link
+                        | Музыка
+                    ul.footer-submenu.list-reset
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Новые треки
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | NRJ Hot 30
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Клипы
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Исполнители
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Что за песня?
+                li.footer-menu__item
+                    span.footer-menu__link
+                        | Фото и видео
+                    ul.footer-submenu.list-reset
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Фото
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Видео
+                li.footer-menu__item
+                    a.footer-menu__link(href="#")
+                        | Подкасты
+                li.footer-menu__item
+                    span.footer-menu__link
+                        | О нас
+                    ul.footer-submenu.list-reset
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Контакты
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Команда
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Новости
+                        li.footer-submenu__item
+                            a.footer-submenu__link(href="#")
+                                | Награды
+                li.footer-menu__item
+                    a.footer-menu__link(href="#")
+                        | Акции
+
+        .page-footer__item.page-footer__item_t_rules
+            a.page-footer__link(href="#")
+                | Связаться с администратором
+            a.page-footer__link(href="#")
+                | Политика конфиденциальности
+            a.page-footer__link.page-footer__link_highlighted(href="#")
+                | Правила участия в конкурсах
+            a.page-footer__link(href="#")
+                | Реклама на Радио Energy
+            a.page-footer__link(href="#")
+                | Более подробная информация для правообладателей
+            a.page-footer__link(href="#")
+                | Интеллектуальные права и отказ от ответственности
+            a.page-footer__link(href="#")
+                | Результаты СОУТ
+            a.page-footer__link(href="#")
+                | Франшиза и вещание Радио Energy в вашем городе
+
+        .page-footer__item.page-footer__item_t_socials
+            +social-links(class="social-links_color_lighten page-footer__socials")
+            .page-footer__copy
+                | ООО «ГПМ Радио» 2022
+            .page-footer__copy
+                | Возрастное ограничение 18+
+
+        .page-footer__item.page-footer__item_t_info
+            | Сетевое издание ENERGYFM.RU, свидетельство о регистрации СМИ Эл № ФС77-81938 от 24.09.2021, выдано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций (Роскомнадзор).
+            | <br>Учредитель сетевого издания: ООО «ГПМ Радио»
+            | <br>Главный редактор: Сериков Д.Г.

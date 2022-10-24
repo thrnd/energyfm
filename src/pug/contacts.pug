@@ -1,0 +1,57 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Контакты"
+    - isInner = true
+
+append content
+    +breadcrumps(["Контакты"])
+
+    .contacts-content
+        .contacts-content__outer
+            h1.title
+                | Контакты
+
+            .contacts-content__inner
+                .contacts-content__desc
+                    h2.contacts-content__subtitle
+                        | Выдача призов
+
+                    p
+                        | Если ты выиграл приз на РАДИО ENERGY в Москве - жди звонка. Наш оператор обязательно свяжется с вами и расскажет, как можно его забрать.
+                    p
+                        | Затем приезжай к нам в офис по адресу:<br><a href="https://yandex.ru/maps/geo/varshavskoye_shosse_9s1a/1736329581/?ll=37.625524%2C55.700238&z=18.54" target="_blank" rel="noopener">Варшавское шоссе, дом 9, стр. 1А, корпус Гастелло, подъезд 1.</a>
+                    p
+                        | Призы выдаются в офисе РАДИО ENERGY: Понедельник 11:00-19:00, четверг 11:00-19:00.
+                    p
+                        strong
+                            | Обязательно возьми с собой паспорт!
+
+                .contacts-content__contacts
+                    .contact-block
+                        .contact-block__title
+                            | Адрес электронной почты:
+                        a.contact-block__link(href="mailto:copyright@gpmradio.ru")
+                            | copyright@gpmradio.ru
+                    .contact-block
+                        .contact-block__title
+                            | Номер телефона редакции:
+                        a.contact-block__link(href="tel:+74959373367")
+                            | + 7 (495) 937-33-67
+                    .contact-block
+                        .contact-block__title
+                            | Адрес электронной почты для отправления досудебной претензии по вопросам нарушения авторских и смежных прав:
+                        a.contact-block__link(href="mailto:copyright@gpmradio.ru")
+                            | copyright@gpmradio.ru
+                    .contact-block
+                        .contact-block__title
+                            | По всем вопросам размещения рекламы на радио  «Energy fm» сейлз-хаус «Газпром-Медиа»
+                        a.contact-block__link(href="tel:+74959214041")
+                            | +7 495 921-40-41
+
+        .contacts-content__map
+            .contacts-content__map-text
+                | РФ, 117105, г. Москва, Варшавское шоссе, дом 9, строение 1А (корпус Гастелло, БЦ «Даниловская мануфактура») Станция метро «Тульская», первый вагон из центра, далее пешком до остановки «Новоданиловский проезд - Академия водного транспорта». БЦ «Даниловская мануфактура», Корпус «Гастелло».
+            iframe.contacts-content__iframe(src="https://yandex.ru/map-widget/v1/?um=constructor%3Aef38f3e6f5fd7b2f6c3c57b3ac672936856302e7c5c17723e7ec481a640ced34&amp;source=constructor" width="500" height="480")
+
+append scripts

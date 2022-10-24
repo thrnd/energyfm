@@ -1,0 +1,14 @@
+mixin like-btn({ isMain = false, mixin = "", disabled = false, isLarge = false, likes = 1 } = {})
+    if typeof likes === "string"
+        - likes = parseFloat(likes)
+    .like-btn(class=`${isMain ? "like-btn_view_main-player" : ""} ${mixin} ${disabled ? "like-btn_disabled" : ""} ${isLarge ? "like-btn_s_lg" : ""}` title=`${disabled ? "Вы уже голосовали за данный трек" : ""}`)
+        .like-btn__likes
+            span.visually-hidden
+                | количество лайков за трек "Название трецка":
+            span.like-btn__likes-node
+                = likes
+        if !disabled
+            button.like-btn__btn(type="button" aria-label="Поставить лайк треку" data-likes=likes)&attributes(attributes)
+                if !isMain
+                    | Like
+                +svg("like")(class="like-btn__icon" width="16" height="15")

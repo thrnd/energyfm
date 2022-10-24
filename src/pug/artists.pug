@@ -1,0 +1,91 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Исполнители"
+    - isInner = true
+
+append content
+    +breadcrumps(["Исполнители"])
+
+    .content-header.content-header_view_visible-input
+        h1.title.content-header__title
+            | Исполнители
+
+        .content-header__controls
+            .content-header__search
+                +local-search({
+                    mixin: "local-search_s_lg js-artists-local-search",
+                    selector: ".artist-list__item[data-string]",
+                    alwaysVisible: true,
+                    text: "Поиск по названию и исполнителю"
+                })
+
+    .alphabet-filter
+        .alphabet-filter__header
+            button.alphabet-filter__btn.alphabet-filter__btn_active(type="button" data-tab="A-Z")
+                | A - Z
+            button.alphabet-filter__btn(type="button" data-tab="А-Я")
+                | A - Я
+            button.alphabet-filter__btn(type="button" data-tab="0-9")
+                | 1 - 9
+        .alphabet-filter__content.alphabet-filter__content_visible(data-tab="A-Z")
+            - const azStart = 65
+            - const azEnd = 90
+            - let n = azStart
+            while n <= azEnd
+                - const letter = String.fromCharCode(n)
+                - n++
+                a.alphabet-filter__btn(href="#")
+                    = letter
+        .alphabet-filter__content(data-tab="А-Я")
+            - const ayaStart = 1040
+            - const ayaEnd = 1071
+            - n = ayaStart
+            while n <= ayaEnd
+                - const letter = String.fromCharCode(n)
+                - n++
+                a.alphabet-filter__btn(href="#")
+                    = letter
+        .alphabet-filter__content(data-tab="0-9")
+            - n = 0
+            while n <= 9
+                a.alphabet-filter__btn(href="#")
+                    = n
+                - n++
+
+    #js-artists-list.artist-letter-list
+        - const artists = ["AQUA", "Thirty Million Seconds To Mars", ]
+        - n = 0
+        .artist-letter-list__item
+            span.visually-hidden
+                | исполнители на букву
+            .artist-letter-list__letter
+                | A
+            .artist-list
+                while n < 6
+                    - const name = artists[ Math.round( Math.random() ) ]
+                    - const cover = `img/artist-${Math.round( Math.random() * 3 ) + 1}.jpg`
+                    .artist-list__item(data-string=name.toLocaleLowerCase())
+                        .artist-card
+                            img.artist-card__cover.lazy(data-src=cover alt="" width="215" height="215")
+                            a.artist-card__link(href="#")
+                                = name
+                        - n++
+        .artist-letter-list__item
+            span.visually-hidden
+                | исполнители на букву
+            .artist-letter-list__letter
+                | B
+            .artist-list
+                - n = 0
+                while n < 4
+                    - const name = artists[ Math.round( Math.random() ) ]
+                    - const cover = `img/artist-${Math.round( Math.random() * 3 ) + 1}.jpg`
+                    .artist-list__item(data-string=name.toLocaleLowerCase())
+                        .artist-card
+                            img.artist-card__cover.lazy(data-src=cover alt="" width="215" height="215")
+                            a.artist-card__link(href="#")
+                                = name
+                        - n++
+
+append scripts

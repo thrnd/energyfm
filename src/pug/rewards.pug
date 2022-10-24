@@ -1,0 +1,42 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Награды"
+    - isInner = true
+
+append content
+    +breadcrumps(["Награды"])
+
+    h1.title
+        | Награды и премии Радио ENERGY
+
+    .reward-content
+        .reward-content__inner
+            .rewards
+                img.rewards__item(src="img/reward-1.png" alt="Радиомания" width="152" height="102")
+                img.rewards__item(src="img/reward-2.png" alt="Russian entertainment awards 2010" width="152" height="102")
+                img.rewards__item(src="img/reward-3.png" alt="Бренд года / Effie 2008" width="152" height="102")
+
+        ul.reward-list.list-reset
+            li.reward-list__item
+                .reward-list__year
+                    | 2019
+                .reward-list__desc
+                    p
+                        | Радио ENERGY одержало победу в категории «Сетевые радиостанции» в номинации «Продвижение в цифровой среде» за интернет-флэшмоб с группой Little Big <a href="#">#SKIBIDICHALLENGE</a>
+            li.reward-list__item
+                .reward-list__year
+                    | 2017
+                .reward-list__desc
+                    p
+                        | Креативные джинглы, эксклюзивные музыкальные заставки шоу «BLACK2WHITE» - получили Золотой Микрофон от <a href="#">РАДИОМАНИИ</a> в номинации «Оформление эфира. Музыкальные джинглы».
+                    p
+                        | Пародии Саймона (ведущий шоу Black2White) – признаны Лучшими в номинации <a href="#">«Продвижение радиостанции в интернете. Музыкальная пародия».</a>
+            li.reward-list__item
+                .reward-list__year
+                    | 2015
+                .reward-list__desc
+                    p
+                        | Федеральное Антикризисное Шоу «Работа В Большом Городе» - было награждено <a href="#">Золотым Микрофоном</a> за создание лучшего Эфирного проекта с практической реализацией социальных задач.
+
+append scripts

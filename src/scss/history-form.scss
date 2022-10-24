@@ -1,0 +1,132 @@
+.history-form {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: rem(25);
+
+    color: var(--text);
+
+    @media (max-width: 767px) {
+        justify-content: center;
+
+        margin-bottom: rem(20);
+    }
+
+    &__inner {
+        display: flex;
+
+        max-width: 345px;
+        margin-right: 20px;
+
+        @media (max-width: 767px) {
+            justify-content: center;
+
+            flex-basis: 100%;
+            max-width: 100%;
+            margin-right: 0;
+            margin-bottom: rem(10);
+        }
+    }
+
+    &__item {
+        position: relative;
+
+        flex-basis: 73px;
+
+        @media (max-width: 767px) {
+            flex-basis: 71px;
+        }
+
+        &_t {
+            &_date {
+                flex-basis: 167px;
+                margin-right: 20px;
+
+                @media (max-width: 767px) {
+                    order: 1;
+
+                    flex-basis: 161px;
+                    margin-right: 0;
+                    margin-left: 20px;
+                }
+            }
+            &_delim {
+                flex-shrink: 0;
+                flex-basis: 10px;
+
+                line-height: 50px;
+                text-align: center;
+
+                @media (max-width: 767px) {
+                    flex-basis: 20px;
+
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+
+    &__input {
+        width: 100%;
+
+        font-size: 1rem;
+
+        @media (max-width: 767px) {
+            font-size: rem(14);
+            font-weight: 600;
+        }
+
+        &_t {
+            &_date {
+                padding-right: 3rem;
+            }
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        right: 14px;
+
+        opacity: 0.5;
+
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    &__submit {
+        padding: 4px 10px;
+        min-width: 202px;
+        min-height: 50px;
+        border: 1px solid var(--blue);
+
+        font-family: inherit;
+        font-size: rem(18);
+        font-weight: 600;
+        color: var(--white);
+
+        background-color: var(--blue);
+        border-radius: 5px;
+
+        @media (max-width: 767px) {
+            width: 100%;
+            max-width: 345px;
+            min-height: 40px;
+
+            font-size: 1rem;
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--blue);
+
+            background-color: transparent;
+            border-color: var(--blue);
+        }
+        &:active {
+            color: var(--d-blue);
+
+            border-color: var(--d-blue);
+        }
+    }
+}

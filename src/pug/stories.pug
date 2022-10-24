@@ -1,0 +1,17 @@
+include ./mixins/svg
+
+.stories-slider
+    .stories-slider__pagination
+    .stories-slider__slider.swiper-container
+        ul.stories-list.list-reset.swiper-wrapper
+            li.stories-list__item.swiper-slide
+                img.stories-list__story(src="img/story-1.jpg")
+            li.stories-list__item.swiper-slide
+                img.stories-list__story(src="img/story-2.jpg")
+            li.stories-list__item.swiper-slide
+                <iframe class="stories-list__story stories-list__story_t_video" src="https://www.youtube.com/embed/nBza-xpJ0gI?controls=0&fs=0&iv_load_policy=3&modestbranding=1&showinfo=0" allow="autoplay; clipboard-write; encrypted-media"></iframe>
+    .stories-slider__nav
+        button.stories-slider__btn.stories-slider__btn_t_prev(type="button")
+            +svg("arrow")(class="stories-slider__icon" width="11" height="21")
+        button.stories-slider__btn.stories-slider__btn_t_next(type="button")
+            +svg("arrow")(class="stories-slider__icon" width="11" height="21")

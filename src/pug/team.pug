@@ -1,0 +1,61 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Команда"
+    - isInner = true
+
+append content
+    +breadcrumps(["Команда"])
+
+    .content-header
+        h1.title.content-header__title
+            | Команда
+
+        .content-header__tags
+            +tags({ items: [
+                { text: "Ведущие", isActive: true, },
+                { text: "Диджеи" },
+                { text: "Редакция" },
+            ]})
+
+    - const ppl = ["Саймон", "Катерина Калинина", "Замбумбаждович Пепежный Валентинович"]
+    .team-list
+        - let n = 0
+        while n < 6
+            - const name = ppl[ Math.round( Math.random() * (ppl.length - 1) ) ]
+            - const roll = Math.round( Math.random() )
+            .team-list__item
+                .person
+                    .person__inner
+                        img.person__photo(src=`img/person-${Math.round( Math.random() + 1 )}.jpg` alt=name width="" height="")
+                        .person__info
+                            | “На протяжении многих лет я занимаюсь проведением корпоративных мероприятий для компаний. Предоставляемые мной услуги ведущего на корпоратив - это невероятное сочетание”
+                    //- if roll === 1
+                    +social-links({ isPerson: true, mixin: "person__socials", })
+                    //- else
+                        .person__socials-ph
+                    h2.person__title
+                        = name
+                    .person__role
+                        | Ведущий 
+                        span.person__show
+                            | Шоу с чёрным перцем
+                    button.person__btn.js-popup-btn(type="button" data-popup-target=`.js-info-popup-${n}`)
+                        | Подробнее
+            - n++
+
+    - n = 0
+    while n < 6
+        - const name = ppl[ Math.round( Math.random() * (ppl.length - 1) ) ]
+        .popup.popup_content_team(class=`js-info-popup-${n}` data-close-on-dark-click)
+            .popup__inner
+                .person.person_view_popup
+                    img.person__photo(src=`img/person-${Math.round( Math.random() + 1 )}.jpg` alt=name width="" height="")
+                    .person__title
+                        = name
+                    .person__info
+                        | “На протяжении многих лет я занимаюсь проведением корпоративных мероприятий для компаний. Предоставляемые мной услуги ведущего на корпоратив - это невероятное сочетание”
+                button.popup__close(type="button" aria-label="Закрыть всплывающее окно")
+        - n++
+
+append scripts

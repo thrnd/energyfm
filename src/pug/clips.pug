@@ -1,0 +1,46 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Клипы"
+    - isInner = true
+
+append content
+    +breadcrumps(["Клипы"])
+
+    .content-header
+        h1.title.content-header__title
+            | Клипы
+
+        .content-header__controls
+            .content-header__search
+                +local-search({
+                    mixin: "local-search_s_lg js-clips-local-search",
+                    selector: ".video-list__item[data-string]",
+                    text: "Поиск по названию",
+                })
+
+    +video({
+        mixin: "video_view_main",
+        img: "img/video-1.jpg",
+        title: "Down By The River",
+        desc: "<a class='video__link' href='#'>Milky Chance</a>",
+        isNew: true,
+    })
+
+    - const videoTitles = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+    - const artists = ["Milky Chance", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+    - let n = 0
+    .video-list#js-clips-list
+        while n < 8
+            - const title = videoTitles[Math.round( Math.random() * (videoTitles.length - 1) )]
+            .video-list__item(data-string=title.toLocaleLowerCase())
+                +video({
+                    img: `img/video-${Math.round( Math.random() + 1)}.jpg`,
+                    title,
+                    desc: `<a class='video__link' href='#'>${artists[Math.round( Math.random() * (artists.length - 1) )]}</a>`,
+                })
+            - n++
+
+    #js-clips-loader
+
+append scripts

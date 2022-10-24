@@ -1,0 +1,82 @@
+include ../mixins/pic
+include ../mixins/single-webpic
+include ../mixins/svg
+include ./social-links
+include ./breadcrumps
+include ./tags
+include ./date-time-component
+include ./local-search
+include ./play-btn
+include ./news-preview
+include ./video
+include ./player
+include ./podcast
+include ./track
+include ./photo-album
+include ./search
+include ./form
+include ./news-article
+
+block vars
+    - var pageTitle
+    - var isAside = false
+    - var isInner = false
+
+<!DOCTYPE html>
+html(lang="ru" class=`${isInner ? "inner-page" : ""}`)
+    head
+        meta(charset="UTF-8")
+        title #{pageTitle} - ENERGY FM
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(href="css/style.min.css" rel="stylesheet")
+    body.page.page_bg_default.webp
+
+        .layout-grid
+            include ./main-player
+            include ./page-header
+
+            .layout-grid__main
+                .container.layout-grid__inner
+                    #MPAjaxMainBlock
+                        if isInner
+                            .layout-grid__content
+                                block content
+                        else
+                            block content
+            .layout-grid__footer
+                include ./page-footer
+
+        .popup.popup_content_video.popup_view_regular
+            button.popup__close(type="button" aria-label="Закрыть всплывающее окно")
+            .popup__inner
+                .iframe-wrap
+
+        block scripts
+            script.
+                var pathToSVGSprite = "img/sprite.svg";
+                var SVGSpriteVer = "";
+            script(src="js/isDoc.min.js")
+            script(src="js/lazyload.min.js")
+            script(src="js/webp.min.js")
+            script(src="js/imask.min.js")
+            script(src="js/ItemFilter.min.js")
+            script(src="js/NRJBodyScrollToggler.min.js")
+            script(src="js/Datepicker.min.js")
+            script(src="js/TitlesTicker.min.js")
+            script(src="js/toggleAnimation.min.js")
+            script(src="js/ThemeToggler.min.js")
+            script(src="js/NRJStories.min.js")
+            script(src="js/NRJLikeShare.min.js")
+            script(src="js/ArtistMaterialsBlock.min.js")
+            script(src="js/NRJMenu.min.js")
+            script(src="js/NRJEqualizer.min.js")
+            script(src="js/NRJNewsFilter.min.js")
+            script(src="js/NRJMainPlayer.min.js")
+            script(src="js/LocalSearch.min.js")
+            script(src="js/CityChangePopup.min.js")
+            script(src="js/DateTimeComponent.min.js")
+            script(src="js/NRJGallery.min.js")
+            script(src="js/swiper.5.2.0.min.js")
+            script(src="js/main.min.js")
+            script(src="js/local.min.js")

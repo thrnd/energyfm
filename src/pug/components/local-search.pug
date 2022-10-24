@@ -1,0 +1,20 @@
+mixin local-search({ mixin = "", alwaysVisible = false, asForm = false, selector, text = "Поиск" } = {})
+    .local-search(class=`${alwaysVisible ? "local-search_always-visible" : ""} ${mixin}`)
+        if alwaysVisible
+            if asForm
+                button.local-search__submit(type="submit")
+                    +svg("search")(class="search__icon" width="17" height="17")
+            else
+                .local-search__submit.local-search__submit_t_icon
+                    +svg("search")(class="search__icon" width="17" height="17")
+        else
+            button.local-search__submit(type="button")
+                +svg("search")(class="search__icon" width="17" height="17")
+
+        label.label.local-search__inner
+            span.visually-hidden
+                = text
+            input.input.input_borderless.label__input.local-search__input(type="text" placeholder=text data-items=selector)
+
+        if !alwaysVisible
+            button.local-search__close(type="button" aria-label="Закрыть форму поиска")

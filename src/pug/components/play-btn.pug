@@ -1,0 +1,14 @@
+mixin play-btn({ disabled, alwaysVisible, withText, isLoaderSm } = {})
+    button.play-btn.play(class=`${disabled ? "play-btn_disabled" : ""}${alwaysVisible ? "play-btn_always-visible" : ""}` type="button" aria-label="Начать воспроизведение" disabled=disabled title=`${disabled ? "трек не найден": ""}`)&attributes(attributes)
+        if withText
+            span.play-btn__text.play-btn__text_t_play
+                | Слушать эфир
+            span.play-btn__text.play-btn__text_t_pause
+                | Остановить
+        +svg("play")(class="play-btn__icon play-btn__icon_t_play" width="14" height="12")
+        +svg("pause")(class="play-btn__icon play-btn__icon_t_pause" width="10" height="14")
+        span.loader.play-btn__loader(class=`${isLoaderSm ? "loader_s_sm" : ""}`)
+            span.loader__el
+            span.loader__el
+            span.loader__el
+            span.loader__el

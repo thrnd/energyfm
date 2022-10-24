@@ -1,0 +1,124 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Трек"
+    - isInner = true
+
+append content
+    +breadcrumps(["Треки"])
+
+    .track-content
+        img.track-content__cover(src="img/track-1.jpg" alt="")
+
+        .track-content__inner
+            h1.track-title
+                span.track-title__artist
+                    | The Police
+                span.track-title__track
+                    | Roxanne
+
+            .track-content__player
+                +play-btn({ alwaysVisible: true, isLoaderSm: true, })(class="btn track-content__play-btn")
+
+                .volume-control.volume-control_view_track.volume-control_vertical.track-content__volume
+                    button.volume-control__btn(type="button")
+                        +svg("sound-full")(class="volume-control__icon" width="16" height="14")
+                    .volume-control__inner
+                        .progress-bar.progress-bar_vertical(data-volume="nrj-main-player" data-volume-vertical="true")
+                            .progress-bar__back(data-volume-line="nrj-main-player" style="height:50%")
+                            .progress-bar__thumb(data-volume-button="nrj-main-player" style="bottom:50%")
+
+                .progress-bar.progress-bar_view_track
+                    .progress-bar__back(data-volume-line="nrj-main-player" style="width:50%")
+                    //- .progress-bar__thumb(data-volume-button="nrj-main-player" style="margin-left:50%")
+
+                .track-content__time
+                    | 00:00
+
+    .clip-text-block
+        - const roll = Math.round( Math.random() )
+        //- if roll === 1
+        //-     .clip-text-block__video
+        //-         iframe.clip-text-block__iframe(width="560" height="315" src="https://www.youtube.com/embed/Uf9t8Ph_qtM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+        //- else
+        .clip-text-block__suggest-clip
+            //- img.clip-text-block__cover(src="img/track-1.jpg" alt="")
+            .clip-text-block__info
+                | Видео еще нет. 
+                button.js-popup-btn.clip-text-block__form-btn(type="button" data-popup-target=".suggest-clip-popup")
+                    | Отправить ссылку на видео
+        .clip-text-block__inner
+            button.clip-text-block__btn.clip-text-block__btn_active(type="button" data-target=".clip-text-block__text_content_lyrics")
+                | Текст песни
+            button.clip-text-block__btn(type="button" data-target=".clip-text-block__text_content_translate")
+                | Перевод
+            .clip-text-block__text.clip-text-block__text_content_lyrics.clip-text-block__text_visible
+                | Roxanne<br>
+                | You don't have to put on the red light<br>
+                | Those days are over<br>
+                | You don't have to sell your body to the night<br>
+                | Roxanne<br>
+                | You don't have to wear that dress tonight<br>
+                | Walk the streets for money<br>
+                | You don't care if it's wrong or if it's right<br>
+                | Roxanne<br>
+                | You don't have to put on the red light<br>
+                | Roxanne<br>
+                | You don't have to put on the red light<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | I loved you since I knew you<br>
+                | I wouldn't talk down to you<br>
+                | I have to tell you just how I feel<br>
+                | I won't share you with another boy<br>
+                | I know my mind is made up<br>
+                | So put away your make up<br>
+                | Told you once I won't tell you again<br>
+                | It's a bad way<br>
+                | Roxanne<br>
+                | You don't have to put on the red light<br>
+                | Roxanne<br>
+                | You don't have to put on the red light<br>
+                | Roxanne (You don't have to put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (You don't have to put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+                | Roxanne (Put on the red light)<br>
+            .clip-text-block__text.clip-text-block__text_content_translate
+                | HUI VAM A NE PEREVOD
+
+    .popup.popup_view_regular.suggest-clip-popup(data-close-on-dark-click)
+        .popup__inner
+            form.form.form_view_popup(action="#" method="post")
+                button.form__close.popup__close(type="button" aria-label="Закрыть всплывающее окно")
+
+                .form__inner
+                    .form__header
+                    .form__title
+                        | Отправьте нам ссылку на клип к треку "БАДЖАМБОЛА УАГАМБА"
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | Ссылка
+                    button.btn.form__submit(type="submit")
+                        | Отправить
+
+                .form__response
+                    +svg("success")(class="form__icon" width="32" height="32")
+                    .form__title
+                    .form__desc
+                    button.form__response-btn(type="button" data-close="")
+append scripts

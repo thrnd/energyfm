@@ -1,0 +1,56 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Подкасты"
+    - isInner = true
+
+append content
+    +breadcrumps(["Подкасты"])
+
+    .content-header
+        h1.title.content-header__title
+            | Подкасты
+
+        .content-header__controls
+            .content-header__search
+                +local-search({
+                    mixin: "js-podcasts-local-search",
+                    selector: ".podcast-list__item[data-string]",
+                })
+            .content-header__filter
+                input.date-time-component__hidden-input(type="hidden" data-items=".podcast-list__item[data-date]")
+                +date-time-component({ isReset: true })
+
+        .content-header__tags
+            +tags({ items: [
+                { text: "Все", isActive: true, },
+                { text: "Шоу с Черным Перцем", },
+                { text: "Joycтики",  },
+                { text: "NRJNews" },
+                { text: "Interview" },
+                { text: "ХЗШоу" },
+                { text: "Пранкиотсаймона" },
+            ]})
+
+    - const titles = ["Название выпуска", "СКОВОРОДКА ПРОТИВ ЖЕНЫ", "СВАДЬБА - ГИТАРИСТ РУКУ СЛОМАЛ", "ПОТЕРЯЛСЯ ДРУГ"]
+    - const shows = ["Название шоу", "Шоу с Черным Перцем", "Joyстики"]
+    - const times = ["53:54", "24:53:54", "1:21", ]
+    - const dates = ["24.08.2022", "25.08.2022", ]
+    - let n = 0
+    .podcast-list#js-podcast-list
+        while n < 10
+            - const title = titles[Math.round( Math.random() * (titles.length - 1) )]
+            - const show = shows[Math.round( Math.random() * (shows.length - 1) )]
+            - const time = times[Math.round( Math.random() * (times.length - 1) )]
+            - const date = dates[Math.round( Math.random() * (dates.length - 1) )]
+            .podcast-list__item(data-string=title.toLocaleLowerCase() data-date=date)
+                +podcast({
+                    img: `img/podcast-${Math.round( Math.random() + 1 )}.jpg`,
+                    title,
+                    show,
+                    date,
+                    time,
+                })
+            - n++
+
+append scripts

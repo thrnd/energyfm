@@ -1,0 +1,45 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Акции"
+    - isInner = true
+
+append content
+    +breadcrumps(["Акции"])
+
+    .content-header
+        h1.title.content-header__title
+            | Акции
+
+        .content-header__tags
+            +tags({ items: [
+                { text: "Актуальные", isActive: true, },
+                { text: "Прошедшие" },
+            ]})
+
+    .action-list
+        - let n = 0
+        while n < 4
+            .action-list__item
+                .action
+                    a.action__img-wrap(href="#")
+                        img.action__img.lazy(data-src="img/action-1.jpg" alt="" width="" height="")
+                    .action__inner
+                        h2.action__title
+                            a.action__link(href="#")
+                                | «Ледокол знаний»
+                        .action__desc
+                            | NRJ Radio и просветительский проект Homo science при поддержке Росатома представляют: Новый сезон проекта “Ледокол знаний”.
+                            | Слушайте наше радио и отправьте яркую пепегу нам на пепего-приемник!
+                            | NRJ Radio и просветительский проект Homo science при поддержке Росатома представляют: Новый сезон проекта “Ледокол знаний”.
+                            | Слушайте наше радио и отправьте яркую пепегу нам на пепего-приемник!
+                            <button class="action__toggle-btn" type="button">Ещё</button>
+                        .action__footer
+                            .action__date
+                                | Акция проходит до 27.10.2021
+                            a.action__rules(href="/test.pdf" download)
+                                | Правила
+                                +svg("download")(class="action__icon" width="14" height="14")
+            - n++
+
+append scripts

@@ -1,0 +1,26 @@
+mixin player({ asHot30, mixin = "", img, btnMixin = "", btnOpts = {}, trackData, })
+    - const roll = Math.round( Math.random() );
+    - const _img = roll === 1 ? "img/placeholder.svg" : img;
+    - btnOpts.disabled = roll === 1;
+    .player(class=mixin)
+        .play-btn-wrap.player__cover-wrap
+            img.player__cover(src=_img width="50" height="50" alt="")
+            +play-btn(btnOpts)(class=`play-btn-wrap__btn ${btnMixin}`)
+
+        if asHot30
+            button.player__inner.player__inner_t_button(type="button" data-id="123")
+                .player-titles.player__title
+                    | !{trackData.title}
+                .player-titles.player__subtitle
+                    | !{trackData.subtitle}
+        else
+            .eq-wrap.player__inner
+                .equalizer.eq-wrap__eq
+                    .equalizer__bar.equalizer__bar_n_1
+                    .equalizer__bar.equalizer__bar_n_2
+                    .equalizer__bar.equalizer__bar_n_3
+                    .equalizer__bar.equalizer__bar_n_4
+                .player-titles.player__title.eq-wrap__placement(class=`${mixin.indexOf("player_view_mini") !== -1 ? " player-titles_any-screen" : ""}`)
+                    | !{trackData.title}
+                .player-titles.player__subtitle.eq-wrap__el(class=`${mixin.indexOf("player_view_mini") !== -1 ? " player-titles_any-screen" : ""}`)
+                    | !{trackData.subtitle}

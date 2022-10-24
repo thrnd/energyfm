@@ -1,0 +1,220 @@
+// модификатор _view_main вешается на компонент на странице с клипами, на первый клип
+// модификатор _view_index-slider вешается на компонент на главной на первое видео
+// модификатор _view_ticking-titles вешается на компоненты на главной
+.video {
+    width: 100%;
+
+    font-size: 1rem;
+    line-height: 1.25em;
+
+    &_view_main {
+        margin-bottom: 1.5rem;
+
+        @media (min-width: 768px) {
+            margin-bottom: rem(40);
+        }
+    }
+    &_view_index-slider {
+
+        @media (min-width: 1280px) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__cover-wrap {
+        position: relative;
+
+        width: 100%;
+        padding-top: 56.154%;
+        margin-bottom: .5rem;
+    }
+    &_view_index-slider &__cover-wrap {
+
+        @media (min-width: 1280px) {
+            flex-grow: 1;
+        }
+    }
+
+    &__cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+    }
+
+    &_view_ticking-titles &__inner {
+
+        @media (min-width: 1025px) {
+            overflow: hidden;
+        }
+    }
+
+    &__title {
+        font-family: $ff-d;
+        text-decoration: none;
+        color: var(--text);
+    }
+
+    &_view_main &__title {
+
+        @media (min-width: 768px) {
+            font-family: $ff;
+            font-size: rem(48);
+            line-height: rem(54);
+            color: var(--red);
+        }
+    }
+
+    &__desc-wrap {
+        font-family: $ff-b;
+        font-size: 1rem;
+    }
+
+    &__desc {
+        margin-right: 0.35em;
+
+        white-space: inherit;
+        text-overflow: inherit;
+
+        overflow: inherit;
+    }
+
+    &__date {
+        font-size: rem(14);
+        vertical-align: top;
+        color: var(--gray);
+    }
+
+    &__link {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        font-weight: inherit;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover,
+        &:focus {
+            opacity: 0.8;
+        }
+        &:active {
+            color: var(--red);
+
+            opacity: 1;
+        }
+    }
+
+    &_view_main &__link {
+
+        &:active {
+            color: var(--d-red);
+        }
+    }
+}
+
+.new-videos-slider {
+    padding-left: var(--container-gap);
+    padding-right: var(--container-gap);
+    margin-left: calc( var(--container-gap) * -1 );
+    margin-right: calc( var(--container-gap) * -1 );
+}
+
+// модификатор _view_artist-clips устанавливается на странице артиста
+    // в шаблон отдаю сразу 8 элементов списка
+    // по макету в мобилке видны только 2 элемента, в планшете - 4
+    // по первому клику на лоадер просто показываются скрытые элементы 
+    // через навешивание модификатора _loaded на список
+    // далее элементы подгружаются лоадером
+.video-list {
+    --video-horizontal-gap: 0px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    width: calc( 100% + var(--video-horizontal-gap) * 2 );
+    margin-left: calc( var(--video-horizontal-gap) * -1 );
+    margin-right: calc( var(--video-horizontal-gap) * -1 );
+
+    @media (min-width: 576px) {
+        --video-horizontal-gap: 8px;
+    }
+    @media (min-width: 1025px) {
+        --video-horizontal-gap: 16px;
+    }
+
+    &_view_slider {
+
+        @media (min-width: 576px) {
+            flex-wrap: nowrap;
+        }
+        @media (min-width: 1280px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__item {
+        flex-basis: 100%;
+        margin-bottom: rem(24);
+
+        @media (min-width: 576px) {
+            flex-basis: 50%;
+            max-width: 50%;
+            padding-left: var(--video-horizontal-gap);
+            padding-right: var(--video-horizontal-gap);
+            margin-bottom: rem(20);
+        }
+        @media (min-width: 1025px) {
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 1280px) {
+            flex-basis: 25%;
+            max-width: 25%;
+        }
+    }
+
+    &_view_artist-clips &__item {
+
+        @media (max-width: 1279px) {
+
+            &:nth-child(n + 5) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            &:nth-child(n + 3) {
+                display: none;
+            }
+        }
+    }
+
+    &_loaded &__item {
+        display: initial !important; // ¯\_(ツ)_/¯ пришлось делать важной шишкой
+    }
+
+    &_view_slider &__item {
+
+        @media (min-width: 576px) {
+            flex-basis: auto;
+            width: 540px;
+            max-width: unset;
+        }
+        @media (min-width: 1025px) {
+            width: 556px;
+            padding-left: var(--video-horizontal-gap);
+            padding-right: var(--video-horizontal-gap);
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 1280px) {
+            flex-basis: 50%;
+            width: auto;
+            max-width: unset;
+        }
+    }
+}

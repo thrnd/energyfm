@@ -1,0 +1,8 @@
+mixin news-article({ title, img, desc })
+    article.news-article
+        img.news-article__img(loading="lazy" src=`img/${img}` alt=title)
+        .news-article__inner
+            h3.news-article__title
+                = title
+            p.news-article__desc
+                = desc

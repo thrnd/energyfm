@@ -1,0 +1,225 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Шоу с Черным Перцем"
+    - isInner = true
+
+append content
+    +breadcrumps(["Шоу с Черным Перцем"])
+
+    .program-content
+        .program-content__intro
+            .program-content__img-wrap
+                img.program-content__img(src="img/program.jpg" alt="Обложка программы &quot;Шоу с Черным Перцем&quot;" width="768" height="412")
+            .program-content__djs
+                .program-dj.program-content__dj
+                    .program-dj__name
+                        | DJ Саймон
+                    +social-links({
+                        isPerson: true,
+                        isSmall: true,
+                        mixin: "program-dj__socials",
+                    })
+                .program-dj.program-content__dj
+                    .program-dj__name
+                        | DJ Катя Калинина
+                    +social-links({
+                        isPerson: true,
+                        isSmall: true,
+                        mixin: "program-dj__socials",
+                    })
+
+        .program-content__inner
+            h1.title.program-content__title
+                | Шоу с Черным Перцем
+            .program-content__schedule
+                .program-content__time
+                    | с 7:00 до 10:00
+                .program-content__days
+                    | по будням
+            .program-content__desc
+                | Шоу с Чёрным Перцем — это лучший способ начать свое утро. Драйвовая музыка, отличное настроение и, разумеется, огромное количество конкурсов, в которых ты можешь выиграть самые разные призы!
+            .program-content__form-desc
+                | Хочешь попасть в прямой эфир или заказать поздравление от Саймона? Заполняй анкету!
+            button.js-popup-btn.btn.program-content__btn(data-popup-target=".js-program-form")
+                | Заполнить анкету
+
+    .program-content__link-wrap
+        a.btn.program-content__full-link(href="#")
+            | Читать все новости
+
+    .program-grid
+        .program-grid__el
+            section.content-block
+                .content-block__header
+                    h2.title.content-block__title
+                        | Интервью
+                    a.content-block__link(href="#")
+                        | Все интервью
+
+                - const titles = ["Название выпуска", "СКОВОРОДКА ПРОТИВ ЖЕНЫ", "СВАДЬБА - ГИТАРИСТ РУКУ СЛОМАЛ", "ПОТЕРЯЛСЯ ДРУГ"]
+                - const shows = ["Название шоу", "Шоу с Черным Перцем", "Joyстики"]
+                - const times = ["53:54", "24:53:54", "1:21", ]
+                - let n = 0
+                .podcast-list
+                    while n < 5
+                        - const title = titles[Math.round( Math.random() * (titles.length - 1) )]
+                        - const show = shows[Math.round( Math.random() * (shows.length - 1) )]
+                        - const time = times[Math.round( Math.random() * (times.length - 1) )]
+                        .podcast-list__item
+                            +podcast({
+                                img: `img/podcast-${Math.round( Math.random() + 1 )}.jpg`,
+                                title,
+                                show,
+                                date: "04.10.2021",
+                                time,
+                            })
+                        - n++
+
+            section.content-block
+                .content-block__header
+                    h2.title.content-block__title
+                        | Пранки
+                    a.content-block__link(href="#")
+                        | Все пранки
+
+                - n = 0
+                .podcast-list
+                    while n < 3
+                        - const title = titles[Math.round( Math.random() * (titles.length - 1) )]
+                        - const show = shows[Math.round( Math.random() * (shows.length - 1) )]
+                        - const time = times[Math.round( Math.random() * (times.length - 1) )]
+                        .podcast-list__item
+                            +podcast({
+                                img: `img/podcast-${Math.round( Math.random() + 1 )}.jpg`,
+                                title,
+                                show,
+                                date: "04.10.2021",
+                                time,
+                            })
+                        - n++
+
+        .program-grid__el
+            section.content-block
+                .content-block__header
+                    h2.title.content-block__title
+                        | Видео
+                    a.content-block__link(href="#")
+                        | Все видео
+
+                +video({
+                    img: "img/video-2.jpg",
+                    title: "Goosebumps",
+                    desc: "Travis Scott",
+                })
+
+            section.content-block
+                .content-block__header
+                    h2.title.content-block__title
+                        | Фото
+                    a.content-block__link(href="#")
+                        | Все фото
+
+                .related-photos
+                    - n = 0
+                    while n < 6
+                        a.related-photos__item(href="#")
+                            img.related-photos__photo.lazy(data-src=`img/photo-${Math.round( Math.random() * 2 ) + 1}.jpg` alt="" width="330" height="330")
+                        - n++
+
+    .popup.popup_content_form.js-program-form
+        .popup__inner
+            form.js-form-1.form.form_view_popup.form__tab.form__tab_visible(action="#" method="post")
+                button.form__close.popup__close(type="button" aria-label="Закрыть всплывающее окно")
+
+                .form__inner
+                    .form__header
+                        .tabs.form__tabs
+                            button.tabs__btn.tabs__btn_active(type="button" data-target=".js-form-1")
+                                | Саймон разрулит
+                            button.tabs__btn(type="button" data-target=".js-form-2")
+                                | Поздравление
+
+                    .form__title
+                        | Саймон разрулит!
+                    .form__desc
+                        | Когда проблему решить нужно, но не хочется или страшно - на помощь готов прийти Чёрный Перец Саймон! Внимание всем скромным, а также тем, кто привык находить нестандартные решения!Ты можешь заказать у Саймона что угодно: попросить соседа выключить дрель, извиниться перед подругой, признаться от твоего имени в любви.<br><br>Заполняй анкету - и жди звонка!
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | От кого послание
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | Ваш номер телефона
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | Кому послание
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | Его/ее номер телефона
+                    label.label.form__item
+                        textarea.input.input_t_textarea.label__input
+                        span.label__text
+                            | В чем может помочь Саймон?
+                    label.label.form__item
+                        textarea.input.input_t_textarea.label__input
+                        span.label__text
+                            | Что любит тот, кому послание?
+                    button.btn.form__submit(type="submit")
+                        | Отправить
+
+                .form__response
+                    +svg("success")(class="form__icon" width="32" height="32")
+                    .form__title
+                    .form__desc
+                    button.form__response-btn(type="button" data-close="")
+
+            form.js-form-2.form.form_view_popup.form__tab(action="#" method="post")
+                button.form__close.popup__close(type="button" aria-label="Закрыть всплывающее окно")
+
+                .form__inner
+                    .form__header
+                        .tabs.form__tabs
+                            button.tabs__btn(type="button" data-target=".js-form-1")
+                                | Саймон разрулит
+                            button.tabs__btn.tabs__btn_active(type="button" data-target=".js-form-2")
+                                | Поздравление
+
+                    .form__title
+                        | Поздравление
+                    .form__desc
+                        | Поздравления от Саймона на РАДИО ENERGY. Хотите поздравить друга? Оставляйте заявку и слушайте в утреннем «Саймон-шоу» эксклюзивное поздравление от Саймона в стиле хип-хоп.
+
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | От кого послание
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | Ваш номер телефона
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | Кому послание
+                    label.label.form__item
+                        input.input.label__input(type="text" required)
+                        span.label__text
+                            | Его/ее номер телефона
+                    label.label.form__item
+                        textarea.input.input_t_textarea.label__input
+                        span.label__text
+                            | Ваше поздравление
+                    button.btn.form__submit(type="submit")
+                        | Отправить
+
+                .form__response
+                    +svg("success")(class="form__icon" width="32" height="32")
+                    .form__title
+                    .form__desc
+                    button.form__response-btn(type="button" data-close="")
+
+append scripts

@@ -1,0 +1,112 @@
+mixin social-links({ mixin, isSmall, isShare, isMusicSocials, isPerson } = {})
+    -
+        let links = [{
+            link: "https://vm.tiktok.com/ZSdFweDpb/",
+            code: "tiktok",
+            text: "ENERGY FM в Tiktok",
+            width: 32,
+            height: 32,
+        }, {
+            link: "https://www.youtube.com/energyrussia",
+            code: "yt",
+            text: "ENERGY FM в Youtube",
+            width: 32,
+            height: 32,
+        }, {
+            link: "https://vk.com/nrj",
+            code: "vk",
+            text: "ENERGY FM во ВКонтакте",
+            width: 32,
+            height: 32,
+        }, {
+            link: "https://ok.ru/nrj",
+            code: "ok",
+            text: "ENERGY FM в Одноклассниках",
+            width: 32,
+            height: 32,
+        }, {
+            link: "https://t.me/nrjrussia",
+            code: "tg",
+            text: "ENERGY FM в Telegram",
+            width: 32,
+            height: 32,
+        }, {
+            link: "https://yappy.media/s/p_4NXZZUZTSePucggdprnXO0",
+            code: "yappy",
+            text: "ENERGY FM в Yappy",
+            width: 32,
+            height: 32,
+        }, {
+            link: "https://rutube.ru/channel/23457238/",
+            code: "rutube",
+            text: "ENERGY FM в Rutube",
+            width: 32,
+            height: 32,
+        }, {
+            link: "https://dzen.ru/radioenergy",
+            code: "dzen",
+            text: "ENERGY FM в Дзен",
+            width: 32,
+            height: 32,
+        }, ]
+
+        if (isMusicSocials) {
+            links = [{
+                link: "aaaaaaaaaasssssssssssddddddddddd",
+                code: "apple",
+                text: "ENERGY FM в Apple Music",
+                width: 14,
+                height: 17,
+            }, {
+                link: "aaaaaaaaaasssssssssssddddddddddd",
+                code: "vk",
+                text: "ENERGY FM во ВКонтакте Музыке",
+                width: 27,
+                height: 17,
+            }, {
+                link: "aaaaaaaaaasssssssssssddddddddddd",
+                code: "ya-music",
+                text: "ENERGY FM в Яндекс Музыке",
+                width: 17,
+                height: 21,
+            }, {
+                link: "aaaaaaaaaasssssssssssddddddddddd",
+                code: "sberzvuk",
+                text: "ENERGY FM в СберЗвуке",
+                width: 18,
+                height: 18,
+            }];
+        }
+
+        if (isShare) {
+            links = [{
+                code: "vk",
+                text: "ENERGY FM во ВКонтакте Музыке",
+                width: 27,
+                height: 17,
+            }, {
+                code: "ok",
+                text: "ENERGY FM в Одноклассниках",
+                width: 13,
+                height: 21,
+            }, {
+                code: "tw",
+                text: "ENERGY FM в Twitter",
+                width: 24,
+                height: 20,
+            }];
+        }
+
+        if (isPerson) {
+            links.length = Math.round( Math.random() + 1 )
+        }
+
+    ul.social-links.list-reset(class=`${mixin} ${isMusicSocials ? "social-links_view_music" : ""} ${isShare ? "social-links_view_share" : ""} ${isSmall ? "social-links_s_sm" : ""}`)&attributes(attributes)
+        each link in links
+            li.social-links__item
+                if isShare
+                    button.social-links__link(type="button" aria-label=link.text)
+                        +svg(link.code, true)(class="social-links__icon" width=link.width height=link.height)
+                else
+                    a.social-links__link(class=`${isMusicSocials ? `social-links__link_t_${link.code}` : ""}` href=link.link target="_blank" rel="noopener" aria-label=link.text)
+                        +svg(link.code, true)(class="social-links__icon" width=link.width height=link.height)

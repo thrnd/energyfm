@@ -1,0 +1,21 @@
+mixin date-time-component({ mixin = "", isReset = false, } = {})
+    .date-time-component(class=mixin)
+        button.date-time-component__btn(type="button" aria-label="Открыть фильтр по дате")
+            +svg("calendar")(class="date-time-component__icon" width="15" height="15")
+        .date-time-component__form
+            .date-time-component__datepicker
+            .date-time-component__inner
+                .date-time-component__time
+                    if isReset
+                        input.date-time-component__input(type="hidden" name="time")
+                        button.date-time-component__time-reset(type="button")
+                            | Сбросить фильтр
+                    else
+                        label.label.date-time-component__label
+                            span.visually-hidden
+                                | Укажите время
+                            input.input.input_borderless.date-time-component__input(type="text" name="time" pattern="[0-9]{2}:[0-9]{2}" placeholder="12:11")
+                        button.date-time-component__time-reset(type="button")
+                            | Любое время
+                button.btn.date-time-component__submit(type="submit")
+                    | Применить

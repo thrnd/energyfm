@@ -1,0 +1,21 @@
+mixin form({ mixin = "" } = {})
+    form.history-form(class=mixin action="#" method="get")
+        .history-form__inner
+            label.history-form__item.history-form__item_t_date
+                span.visually-hidden
+                    | Дата
+                input.input.history-form__input.history-form__input_t_date(type="text" name="date" value="10.08.2021")
+                +svg("calendar")(class="history-form__icon" width="17" height="17")
+            label.history-form__item
+                span.visually-hidden
+                    | Время в эфире, от
+                input.input.history-form__input(type="text" name="timefrom" value="10:10")
+            span.history-form__item.history-form__item_t_delim
+                | -
+            label.history-form__item
+                span.visually-hidden
+                    | Время в эфире, до
+                input.input.history-form__input(type="text" name="timeto" value="10:10")
+
+        button.history-form__submit(type="submit")
+            | Показать

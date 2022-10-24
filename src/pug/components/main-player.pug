@@ -1,0 +1,209 @@
+.main-player-mini
+    button.main-player-mini__expand-btn(type="button" aria-label="Развернуть плеер")
+        +svg("expand")(width="14" height="14")
+
+    .volume-control.volume-control_vertical.volume-control_view_main-player.main-player-mini__volume
+        button.volume-control__btn(type="button")
+            +svg("sound-full")(class="volume-control__icon" width="16" height="14")
+        .volume-control__inner
+            .progress-bar.progress-bar_vertical(data-volume="nrj-main-player" data-volume-vertical="true")
+                .progress-bar__back(data-volume-line="nrj-main-player" style="height:50%")
+                .progress-bar__thumb(data-volume-button="nrj-main-player" style="bottom:50%")
+
+    +player({
+        mixin: "player_view_mini main-player-mini__player",
+        img: "img/cover-sm.jpg",
+        trackData: {
+            title: "Шоу с чёрным перцем",
+            subtitle: '<span class="main-player-mini__track">Down By The River Down By The River</span><span class="main-player-mini__artist">Milky Chance</span>',
+        },
+        btnMixin: "main-player-mini__cover-btn",
+    })
+
+    +play-btn({ alwaysVisible: true, isLoaderSm: true, })(class="btn main-player-mini__play-btn")
+
+.main-player
+    button.js-toggle-theme.toggle-theme-btn.toggle-theme-btn_view_compact.main-player__theme-btn(type="button" aria-label="Переключиться на темную тему")
+        +svg("sun")(class="toggle-theme-btn__icon" width="20" height="20")
+        +svg("moon")(class="toggle-theme-btn__icon toggle-theme-btn__icon_t_moon" width="17" height="17")
+
+    button.main-player__shrink-btn(type="button")
+        +svg("shrink")(width="16" height="16")
+
+    audio(data-player='nrj-main-player')
+
+    .main-player__scrollable
+        .channels-slider.swiper-container
+            ul.channel-list.list-reset.swiper-wrapper
+                - const channels = ["Techno", "Radio NRJ", "Trance", "Club Dance", "Yet another Club Dance",]
+                each channel, index in channels
+                    li.channel-list__item.swiper-slide
+                        button.channel-list__btn(class=`${index === 1 ? "channel-list__btn_active" : ""}`)
+                            = channel
+
+        .main-player__inner
+            .main-player__cover-wrap
+                img.main-player__cover.lazy(data-src="img/cover.jpg" alt="" width="250" height="250")
+            +play-btn({ alwaysVisible: true, withText: true, })(class="btn main-player__play-live")
+
+            .live-block
+                .live-block__header
+                    .main-player__title
+                        | Сейчас в эфире
+                    .live-block__program
+                        | Шоу с чёрным перцем
+                .volume-control.volume-control_view_main-player.live-block__volume
+                    button.volume-control__btn(type="button")
+                        +svg("sound-full")(class="volume-control__icon" width="16" height="14")
+                    .volume-control__inner
+                        .progress-bar(data-volume="nrj-main-player" data-volume-vertical="true")
+                            .progress-bar__back(data-volume-line="nrj-main-player" style="width:50%")
+                            .progress-bar__thumb(data-volume-button="nrj-main-player" style="margin-left:50%")
+
+            .live-track
+                .live-eq.live-track__eq
+                    .live-eq__bar.live-eq__bar_n_1
+                    .live-eq__bar.live-eq__bar_n_2
+                    .live-eq__bar.live-eq__bar_n_3
+                    .live-eq__bar.live-eq__bar_n_4
+                    .live-eq__bar.live-eq__bar_n_5
+                    .live-eq__bar.live-eq__bar_n_6
+                    .live-eq__bar.live-eq__bar_n_7
+                    .live-eq__bar.live-eq__bar_n_8
+                    .live-eq__bar.live-eq__bar_n_9
+                    .live-eq__bar.live-eq__bar_n_10
+                    .live-eq__bar.live-eq__bar_n_11
+                    .live-eq__bar.live-eq__bar_n_12
+                    .live-eq__bar.live-eq__bar_n_13
+                    .live-eq__bar.live-eq__bar_n_14
+                    .live-eq__bar.live-eq__bar_n_15
+                +player({
+                    mixin: "live-track__player player_view_main-player player_view_live",
+                    img: "img/cover-sm.jpg",
+                    trackData: {
+                        title: "Down By The River Down By The River",
+                        subtitle: 'Milky Chance',
+                    },
+                    btnOpts: {
+                        isLoaderSm: true,
+                    },
+                })
+                button.live-track__lyrics-btn(type="button" aria-label="Показать текст песни")
+                    +svg("msg")(class="live-track__lyrics-icon" width="18" height="18")
+
+            .live-track__lyrics
+                span.loader.live-track__lyrics-loader
+                    span.loader__el
+                    span.loader__el
+                    span.loader__el
+                    span.loader__el
+                .live-track__lyrics-text
+                    pre
+                        | Roxanne
+                        | You don't have to put on the red light
+                        | Those days are over
+                        | You don't have to sell your body to the night
+                        | Roxanne
+                        | You don't have to wear that dress tonight
+                        | Walk the streets for money
+                        | You don't care if it's wrong or if it's right
+                        | Roxanne
+                        | You don't have to put on the red light
+                        | Roxanne
+                        | You don't have to put on the red light
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | I loved you since I knew you
+                        | I wouldn't talk down to you
+                        | I have to tell you just how I feel
+                        | I won't share you with another boy
+                        | I know my mind is made up
+                        | So put away your make up
+                        | Told you once I won't tell you again
+                        | It's a bad way
+                        | Roxanne
+                        | You don't have to put on the red light
+                        | Roxanne
+                        | You don't have to put on the red light
+                        | Roxanne (You don't have to put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (You don't have to put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+                        | Roxanne (Put on the red light)
+
+            .player-history
+                .player-history__title.main-player__title
+                    | Предыдущие треки
+                ul.history-list.list-reset
+                    -
+                        const historyItems = [{
+                            title: "Salt",
+                            subtitle: 'Ava Max',
+                            time: "12:43",
+                        }, {
+                            title: "Regardless",
+                            subtitle: 'Rudimental',
+                            time: "12:40",
+                        }, {
+                            title: "Salt",
+                            subtitle: 'Ava Max Rudimental maafaka shlong title',
+                            time: "12:37",
+                        }]
+                    each historyItem in historyItems
+                        li.history-list__item
+                            +player({
+                                mixin: "player_view_main-player history-list__player",
+                                img: "img/cover-sm.jpg",
+                                trackData: {
+                                    title: historyItem.title,
+                                    subtitle: historyItem.subtitle,
+                                },
+                                btnOpts: {
+                                    isLoaderSm: true,
+                                }
+                            })
+                            .history-list__time
+                                = historyItem.time
+                a.player-history__link.player-history__link_mobile-only(href="#")
+                    | Показать все
+                a.player-history__link(href="#")
+                    | Вся история
+
+            .main-player__spacer
+
+            a.stream-link.main-player__stream-link(href="#")
+                img.stream-link__img.lazy(data-src="img/live-preview.jpg" alt="Прямая трансляция из студии ENERGY FM" width="328" height="185")
+                .stream-link__icon-wrap
+                    +svg("video")(class="stream-link__icon" width="18" height="12")
+                span.stream-link__title
+                    span.stream-link__title-highlighted
+                        | LIVE
+                    | из студии
+
+            .main-player__spacer.main-player__spacer_s_lg
+
+            .other-platforms
+                .other-platforms__el.other-platforms__el_visible.other-platforms__el_appeared
+                    span.other-platforms__inner
+                        | Слушайте плейлисты NRJ на платформах кураторов
+                    button.other-platforms__btn(type="button" aria-label="Показать блок с музыкальными платформами кураторов")
+                        +svg("arrow")(width="16" height="16")
+                .other-platforms__el.other-platforms__el_t_socials
+                    +social-links({ isMusicSocials: true })(class="other-platforms__inner")
+                    button.other-platforms__btn.other-platforms__btn_t_close(type="button" aria-label="Скрыть блок с музыкальными платформами кураторов")
+                        +svg("arrow")(class="other-platfo1rms__icon" width="16" height="16")
+
+            +social-links({ isSmall: true, })(class="main-player__socials")

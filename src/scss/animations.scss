@@ -1,0 +1,55 @@
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fade {
+    100% { opacity: 0; }
+}
+
+@keyframes loader-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX( calc( var(--circle-size) + var(--circle-gap) ) ); }
+}
+@keyframes loader-grow {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes titleTicking {
+    0%  { transform: translateX(0); }
+    10%  { transform: translateX(0); }
+    70%  { transform: translateX(var(--translate-x-width) ); }
+    100% { transform: translateX(var(--translate-x-width) ); }
+}
+
+@keyframes liveTicker1 {
+    0%    { transform: translateX(100%); }
+    100%  { transform: translateX(-100%); }
+}
+@keyframes liveTicker2 {
+    0%    { transform: translateX(0); }
+    100%  { transform: translateX(-200%); }
+}
+
+@keyframes equalize {
+    0%    { transform: translateY(-100%); }
+    20%   { transform: translateY(-40%); }
+    40%   { transform: translateY(-55%); }
+    60%   { transform: translateY(-5%); }
+    80%   { transform: translateY(-73%); }
+    100%  { transform: translateY(-100%); }
+}
+@keyframes equalizeHorizontal {
+    0%    { transform: translateX(-100%); }
+    20%   { transform: translateX(-40%); }
+    40%   { transform: translateX(-55%); }
+    60%   { transform: translateX(-5%); }
+    80%   { transform: translateX(-73%); }
+    100%  { transform: translateX(-100%); }
+}

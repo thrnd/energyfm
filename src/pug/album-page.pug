@@ -1,0 +1,45 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Фото"
+    - isInner = true
+
+append content
+    +breadcrumps(["Фото"])
+
+    h1.title
+        | 2021 - Artik & Asti на Радио ENERGY
+
+    .photo-list
+        - let n = 0
+        while n < 13
+            a.photo-list__item(href="#" data-index=n)
+                img.photo-list__photo.lazy(data-src=`img/gphoto-${Math.round( Math.random() ) + 1}.jpg` alt="" width="480" height="480")
+            - n++
+
+    .js-gallery-popup.popup.popup_content_gallery
+        button.popup__close(type="button" aria-label="Закрыть всплывающее окно")
+        .popup__inner
+            .gallery-slider-wrap
+                button.gallery-slider__btn.gallery-slider__btn_t_prev(type="button")
+                    +svg("arrow")(class="gallery-slider__icon" width="12" height="21")
+                button.gallery-slider__btn.gallery-slider__btn_t_next(type="button")
+                    +svg("arrow")(class="gallery-slider__icon" width="12" height="21")
+                .gallery-slider.swiper-container
+                    .gallery-slider__pagination
+                    .gallery-slider__inner.swiper-wrapper
+                        - n = 0
+                        while n < 10
+                            .gallery-slider__slide.swiper-slide
+                                a.gallery-slider__link(href="#" target="_blank" data-index=n)
+                                    img.gallery-slider__photo.lazy(data-src="img/big-shlong-photo-1.jpg" alt="" width="" height="")
+                            - n++
+                .gallery-thumb-slider.swiper-container
+                    .swiper-wrapper
+                        - n = 0
+                        while n < 10
+                            a.gallery-thumb-slider__slide.swiper-slide(href="#" data-index=n)
+                                img.gallery-thumb-slider__preview.lazy(data-src="img/photo-1.jpg" alt="" width="48" height="48")
+                            - n++
+
+append scripts

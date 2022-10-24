@@ -1,0 +1,4 @@
+mixin svg(name, isSocialSprite = false)
+    svg&attributes(attributes)
+        - const spriteFile = isSocialSprite ? "img/socials-sprite.svg" : "img/sprite.svg";
+        use(xlink:href=`${spriteFile}#${name}`)

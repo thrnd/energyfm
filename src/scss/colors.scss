@@ -1,0 +1,164 @@
+@mixin lightColors {
+    // общие цвета для сайта
+
+    --text:             var(--l-black);
+    --main-bg:          var(--white);
+    --main-bg-90:       var(--white-90);
+
+    // всякие разделители, встречаются в разных местах сайта
+    --delim:            var(--d-white);
+    --d-delim:          var(--l2-gray);
+
+    // специфичные для компонентов цвета
+
+    // link
+        --link:         var(--gray);
+        --link-hovered: var(--black);
+        --link-active:  var(--red);
+
+    // input
+        --input-bg-hovered: #C1C1C2;
+        --input-bd-hovered: var(--gray-40);
+        --input-bg-focused: var(--d-white);
+        --input-bd-focused: var(--gray);
+        --input-ph-hovered: var(--l-black);
+
+    // form
+        --form-bg:          var(--main-bg);
+        --popup-form-bg:    var(--black-30);
+
+    // volume-control
+        --volume-bg: var(--l2-gray);
+
+    // tag-btn
+        --tag-bg:           var(--gray-10);
+        --tag-bg-hovered:   var(--gray-40);
+
+    // header
+        --toggle-theme-selected-bg: var(--l-black);
+        --toggle-theme-icon:        var(--white);
+        --toggle-theme-icon-moon:   var(--l2-gray);
+        --menu-scrollbar:           var(--l2-gray);
+        --menu-header-bdc:          var(--l2-gray);
+        --submenu-bg:               var(--d-white);
+        --submenu-link-bg-hover:    var(--l2-gray);
+        --submenu-link-active:      var(--gray);
+        --coverup:                  var(--gray-10);
+
+    // datepicker
+        --dp-bg:            var(--main-bg);
+        --dp-d-bg:          var(--main-bg);
+        --dp-btn-active:    var(--d-red);
+        --dp-disabled:      var(--gray);
+
+    // like-share
+        --share-list-bg:        var(--d-white);
+        --share-list-shadow:    rgba(0, 0, 0, 0.06);
+
+    // детальная страница трека 
+        --song-text-bg: var(--d-white);
+
+    // системные страницы
+        --sys-color: var(--purple);
+}
+
+@mixin darkColors {
+    // общие цвета для сайта
+
+    --text:             var(--white);
+    --main-bg:          var(--black);
+    --main-bg-90:       var(--black-90);
+
+    // всякие разделители, встречаются в разных местах сайта
+    --delim:            var(--gray-40);
+    --d-delim:          var(--gray);
+
+    // специфичные для компонентов цвета
+
+    // link
+        --link-hovered: var(--red);
+        --link-active:  var(--nrj-red);
+
+    // input
+        --input-bg-hovered: var(--gray-40);
+        --input-bd-hovered: var(--gray-40);
+        --input-bg-focused: var(--gray-10);
+        --input-bd-focused: var(--gray);
+        --input-ph-hovered: var(--l-gray);
+
+    // form
+        --form-bg:          var(--purple);
+        --popup-form-bg:    var(--gray-40);
+
+    // volume-control
+        --volume-bg: var(--purple);
+
+    // tag-btn
+        --tag-bg:           var(--white-10);
+        --tag-bg-hovered:   var(--white-10);
+
+    // header
+        --toggle-theme-selected-bg: var(--l2-gray);
+        --toggle-theme-icon:        var(--l-black);
+        --toggle-theme-icon-moon:   var(--gray);
+        --menu-scrollbar:           var(--gray);
+        --menu-header-bdc:          var(--main-bg);
+        --submenu-bg:               #1C191F;
+        --submenu-link-bg-hover:    var(--white-10);
+        --submenu-link-active:      var(--l-gray);
+        --coverup:                  var(--white-10);
+
+    // like-share
+        --share-list-bg:        var(--gray-40);
+        --share-list-shadow:    var(--gray-40);
+
+    // детальная страница трека
+        --song-text-bg: var(--white-5);
+
+    // системные страницы
+        --sys-color: var(--white);
+}
+
+:root {
+    --white:        #ffffff;
+    --d-white:      #FBFBFB;
+    --white-5:      rgba(255, 255, 255, 0.05);
+    --white-10:     rgba(255, 255, 255, 0.1);
+    --white-70:     rgba(255, 255, 255, 0.7);
+    --white-90:     rgba(255, 255, 255, 0.9);
+
+    --black:        #0B060F;
+    --l-black:      #1E1E1E;
+    --black-30:     #0b060f4d;
+    --black-75:     #0b060fbf;
+    --black-90:     #0b060fe6;
+
+    --gray:         #757a85;
+    --l-gray:       #9599A4;
+    --l2-gray:      #e6e6e6;
+    --gray-10:      #757a851a;
+    --gray-40:      #757a8566;
+
+    --red:          #DB1F2A;
+    --red-90:       #db1f2ce6;
+    --d-red:        #AF1917;
+    --nrj-red:      #FF0000;
+    --purple:       #1A0F22;
+    --purple-90:    #1a0f22e6;
+    --green:        #6BDE8B;
+}
+
+:root,
+:root.light-theme {
+    @include lightColors;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include darkColors;
+    }
+}
+
+:root.dark-theme {
+    @include darkColors;
+}

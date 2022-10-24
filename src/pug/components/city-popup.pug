@@ -1,0 +1,141 @@
+.js-city-popup.city-popup.popup
+    .container.city-popup__inner
+        +local-search({
+            mixin: "local-search_s_full-width city-popup__search",
+            alwaysVisible: true,
+            selector: ".city-list__item[data-string]",
+        })
+
+        ul.letter-list.list-reset#js-city-search
+            li.letter-list__item
+                span.visually-hidden
+                    | города на букву
+                span.letter-list__letter
+                    | А
+                ul.city-list.list-reset
+                    li.city-list__item(data-string="альметьевск 107.4")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Альметьевск 
+                            span.city-list__fm
+                                | 107.7
+                    li.city-list__item(data-string="анапа")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Анапа 
+                            span.city-list__fm
+                                | 92.9
+                    li.city-list__item(data-string="анжеро-Судженск")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Анжеро-Судженск 
+                            span.city-list__fm
+                                | 104.4
+                    li.city-list__item(data-string="анапа")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Анапа 
+                            span.city-list__fm
+                                | 92.9
+                    li.city-list__item(data-string="армавир")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Армавир 
+                            span.city-list__fm
+                                | 97.4
+            li.letter-list__item
+                span.visually-hidden
+                    | города на букву
+                span.letter-list__letter
+                    | Б
+                ul.city-list.list-reset
+                    li.city-list__item(data-string="балаково")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Балаково 
+                            span.city-list__fm
+                                | 107.4
+                    li.city-list__item(data-string="барда")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Барда 
+                            span.city-list__fm
+                                | 92.9
+                    li.city-list__item(data-string="барнаул")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Барнаул 
+                            span.city-list__fm
+                                | 88.2
+                    li.city-list__item(data-string="белово")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Белово 
+                            span.city-list__fm
+                                | 92.9
+                    li.city-list__item(data-string="белокуриха")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Белокуриха 
+                            span.city-list__fm
+                                | 97.4
+            li.letter-list__item
+                span.visually-hidden
+                    | города на букву
+                span.letter-list__letter
+                    | К
+                ul.city-list.list-reset
+                    li.city-list__item(data-string="комсомольск-на-амуре")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Комсомольск-на-Амуре 
+                            span.city-list__fm
+                                | 97.4
+            li.letter-list__item
+                span.visually-hidden
+                    | города на букву
+                span.letter-list__letter
+                    | М
+                ul.city-list.list-reset
+                    li.city-list__item(data-string="магнитогорск")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Магнитогорск 
+                            span.city-list__fm
+                                | 107.4
+                    li.city-list__item(data-string="мариинск")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Мариинск 
+                            span.city-list__fm
+                                | 92.9
+                    li.city-list__item(data-string="междуреченск")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Междуреченск 
+                            span.city-list__fm
+                                | 88.2
+                    li.city-list__item(data-string="михайловка")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Михайловка 
+                            span.city-list__fm
+                                | 92.9
+                    li.city-list__item(data-string="можайск")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Можайск 
+                            span.city-list__fm
+                                | 97.4
+                    li.city-list__item(data-string="можга")
+                        button.city-list__btn(type="button")
+                            span.city-list__btn-inner
+                                | Можга 
+                            span.city-list__fm
+                                | 88.2
+                    li.city-list__item(data-string="москва")
+                        button.city-list__btn.city-list__btn_active(type="button")
+                            span.city-list__btn-inner
+                                | Москва 
+                            span.city-list__fm
+                                | 97.4

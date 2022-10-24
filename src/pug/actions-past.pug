@@ -1,0 +1,32 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Акции"
+    - isInner = true
+
+append content
+    +breadcrumps(["Акции"])
+
+    .content-header
+        h1.title.content-header__title
+            | Акции
+
+        .content-header__tags
+            +tags({ items: [
+                { text: "Актуальные", isActive: true, },
+                { text: "Прошедшие" },
+            ]})
+
+    .action-list.action-list_view_compact
+        - let n = 0
+        while n < 12
+            .action-list__item
+                .action.action_view_compact
+                    //- img.action__img.lazy(data-src="img/action-2.jpg" alt="" width="152" height="152")
+                    img.action__img.lazy(data-src="img/action-1.jpg" alt="" width="519" height="291")
+                    h2.action__title
+                        a.action__link(href="#")
+                            | «Ледокол знаний»
+            - n++
+
+append scripts

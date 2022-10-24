@@ -1,0 +1,62 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Что за песня?"
+    - isInner = true
+
+append content
+    +breadcrumps(["Что за песня?"])
+
+    .playlist-content
+        .playlist-content__header
+            h1.title.playlist-content__title
+                | Что за песня?
+
+            form.playlist-content__inner(action="#" method="GET")
+                button.playlist-content__btn.playlist-content__btn_t_prev(type="button")
+                    +svg("arrow")(width="8" height="15")
+                .playlist-content__current
+                    | Сегодня, 23 Сентября 2021
+                button.playlist-content__btn.playlist-content__btn_t_next.playlist-content__btn_hidden(type="button")
+                    +svg("arrow")(width="8" height="15")
+                input.date-time-component__hidden-input(type="hidden" name="date")
+                +date-time-component({ mixin: "date-time-component_form-centered playlist-content__datepicker" })
+
+            .playlist-content__time
+                | 22:48
+                //- | 12:11
+
+        .playlist
+            - const trackTitles = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",]
+            - let n = 0
+            while n < 8
+                - const title = trackTitles[Math.round( Math.random() * (trackTitles.length - 1) )]
+                - const isOnair = n === 3
+                .playlist__item(class=`${isOnair ? "playlist__item_view_onair" : ""}`)
+                    .playlist__time
+                        //- | 22:35
+                        | 12:09
+                    +player({
+                        mixin: `playlist__player${isOnair ? " player_view_playlist-onair" : ""}`,
+                        img: "img/cover-sm.jpg",
+                        trackData: {
+                            title,
+                            subtitle: "Milky Chance",
+                        },
+                        btnOpts: {
+                            isLoaderSm: true,
+                        },
+                    })
+                    .like-share.playlist__like-share
+                        button.like-btn.playlist__like-btn(type="button")
+                            +svg("like")(class="like-btn__icon" width="19" height="18")
+                            span.like-btn__likes
+                                //- | 5
+                                | 10k
+                        .share.like-share__share
+                            .share__title.like-share__title
+                                | Поделиться
+                            +social-links({ mixin: "like-share__list", isShare: true })
+                - n++
+
+append scripts

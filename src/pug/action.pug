@@ -1,0 +1,76 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Матрица Воскрешение"
+    - isInner = true
+
+append content
+    +breadcrumps(["Акции", "Матрица Воскрешение"])
+
+    h1.visually-hidden
+        | Матрица Воскрешение
+
+    .action-content
+        +pic([{
+            name: "action--w--704",
+            ext: "jpg",
+            media: "(max-width: 767px)",
+            alt: "asdasd",
+            isDefault: true
+        }, {
+            name: "action--dt",
+            ext: "jpg",
+            media: "(min-width: 1025px)",
+            alt: "asdasd"
+        }, {
+            name: "action--w--704",
+            ext: "jpg",
+            media: "(min-width: 768px)",
+            alt: "asdasd",
+            isDefault: true
+        }])(class="action-content__img" width="704" height="233")
+
+        .action-content__desc
+            p
+                | Радио ENERGY рекомендует
+            p
+                | Киану Ривз и Кэрри-Энн Мосс в фильме
+            p
+                | МАТРИЦА: ВОСКРЕШЕНИЕ
+            p
+                | Слушай Радио ENERGY
+            p
+                | Правильно продолжи НЕО-логизм
+            p
+                | И выиграй VR-очки
+            p
+                | Или билеты на специальный показ фильма
+            p
+                | МАТРИЦА: ВОСКРЕШЕНИЕ
+            p
+                | В кино с 16 декабря
+            p
+                | Категория 16+
+            p
+                | Правила
+
+    section.content-block
+        .content-block__header
+            h2.title.content-block__title
+                | Еще акции
+            a.content-block__link(href="#")
+                | Все акции
+
+        .actions-slider.swiper-container
+            .swiper-wrapper
+                - let n = 0
+                while n < 4
+                    a.actions-slider__slide.swiper-slide(href="#")
+                        img.actions-slider__img.lazy(data-src="img/action-slider.jpg" alt="" width="337" height="189")
+                    - n++
+            button.actions-slider__btn.actions-slider__btn_t_prev(type="button")
+                +svg("arrow")(class="actions-slider__icon" width="8" height="14")
+            button.actions-slider__btn.actions-slider__btn_t_next(type="button")
+                +svg("arrow")(class="actions-slider__icon" width="8" height="14")
+
+append scripts

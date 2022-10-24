@@ -1,0 +1,251 @@
+// модификатор _view_new-tracks устанавливается
+    // на список из 5ти самых свежих треков на странице "новые треки"
+// модификатор _view_slider устанавливается для всех списков, которые являются слайдерами
+// модификатор _view_artist-tracks устанавливается на странице артиста
+    // в шаблон отдаю сразу 12 элементов списка
+    // по макету в мобилке видны только 4 элемента, в планшете - 8
+    // по первому клику на лоадер просто показываются скрытые элементы 
+    // через навешивание модификатора _loaded на список
+    // далее элементы подгружаются лоадером
+// модификатор _view_index-page устанавливается на список треков на главной
+.track-list {
+    --tracks-gap: 8px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-right: calc( var(--tracks-gap) * -1 );
+    margin-left: calc( var(--tracks-gap) * -1 );
+
+    @media (min-width: 1280px) {
+        --tracks-gap: 16px;
+    }
+
+    &_view_slider {
+
+        @media (max-width: 1279px) {
+            flex-wrap: nowrap;
+        }
+    }
+    &_view_index-page {
+        --tracks-gap: 6px;
+
+        width: calc( 100% + var(--tracks-gap) * 2 );
+
+        @media (min-width: 768px) {
+            --tracks-gap: 8px;
+        }
+        @media (min-width: 1280px) {
+            --tracks-gap: 16px;
+        }
+    }
+
+    &_view_new-tracks {
+
+        @media (min-width: 1280px) {
+            display: grid;
+            grid-template-columns: repeat(4, calc(25% - 32px * 3 / 4));
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 28px 32px;
+
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: rem(40);
+        }
+    }
+
+    &__item {
+        flex-basis: 50%;
+        max-width: 50%;
+        padding: 0 var(--tracks-gap);
+        margin-bottom: rem(28);
+
+        @media (min-width: 500px) {
+            flex-basis: calc(100% / 3);
+            max-width: calc(100% / 3);
+        }
+        @media (min-width: 768px) {
+            flex-basis: 25%;
+            max-width: 25%;
+        }
+        @media (min-width: 1280px) {
+            flex-basis: calc(100% / 6);
+            max-width: calc(100% / 6);
+        }
+    }
+
+    &_view_new-tracks &__item {
+
+        @media (min-width: 1280px) {
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+
+            &:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+        }
+    }
+
+    &_view_artist-tracks &__item {
+
+        @media (max-width: 1279px) {
+
+            &:nth-child(n + 9) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            &:nth-child(n + 7) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 499px) {
+
+            &:nth-child(n + 5) {
+                display: none;
+            }
+        }
+    }
+
+    &_view_slider &__item {
+
+        @media (max-width: 1279px) {
+            width: calc( 344px + var(--tracks-gap) * 2 );
+            flex-basis: auto;
+        }
+        @media (max-width: 575px) {
+            width: calc( 242px + var(--tracks-gap) * 2 );
+        }
+    }
+    &_view_index-page &__item {
+        flex-basis: 25%;
+        max-width: 25%;
+
+        &:nth-last-child(-n + 2) {
+            display: none;
+
+            @media (min-width: 1838px) {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1838px) {
+            flex-basis: 20%;
+            max-width: 20%;
+        }
+        @media (max-width: 1279px) {
+            width: calc( 164px + var(--tracks-gap) * 2 );
+            max-width: calc( 164px + var(--tracks-gap) * 2 );
+            flex-basis: auto;
+            margin-bottom: 0;
+        }
+        @media (max-width: 575px) {
+            width: calc( 156px + var(--tracks-gap) * 2 );
+            max-width: calc( 156px + var(--tracks-gap) * 2 );
+        }
+    }
+
+    &_loaded &__item:nth-child(n) {
+        display: initial;
+    }
+}
+
+// модификатор _view_main используется для первого трека на странице "новые треки"
+// модификатор _view_ticking-titles вешается на компонент на главной странице
+.track {
+    // переменная нужна для компонента эквалайзера
+    --ctx-bg: var(--main-bg);
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--text);
+
+    &__cover-wrap {
+        margin-bottom: rem(8);
+    }
+
+    &_view_main &__cover-wrap {
+        margin-bottom: rem(12);
+    }
+
+    &__cover {
+        display: block;
+
+        width: 100%;
+        height: auto;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+
+        max-width: 100%;
+    }
+    &_view_ticking-titles &__inner {
+
+        @media (min-width: 1025px) {
+            overflow: hidden;
+        }
+    }
+
+    &__title,
+    &__artist {
+        font-size: 1rem;
+        line-height: rem(20);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &__title {
+        font-family: $ff-d;
+    }
+    &_view_main &__title {
+
+        @media (min-width: 1280px) {
+            font-family: $ff;
+            font-size: rem(48);
+            line-height: rem(54);
+            color: var(--red);
+        }
+    }
+
+    &__artist {
+        font-family: $ff-b;
+    }
+
+    &__link {
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover,
+        &:focus {
+            opacity: 0.8;
+        }
+        &:active {
+            color: var(--red);
+
+            opacity: 1;
+        }
+    }
+}
+
+.new-tracks-slider {
+    padding-left: var(--container-gap);
+    padding-right: var(--container-gap);
+    margin-left: calc( var(--container-gap) * -1 );
+    margin-right: calc( var(--container-gap) * -1 );
+
+    @media (min-width: 1280px) {
+        overflow: initial;
+    }
+}

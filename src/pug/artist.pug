@@ -1,0 +1,74 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Страница исполнителя"
+    - isInner = true
+
+append content
+    +breadcrumps(["Исполнители", "David Bowie"])
+
+    main.artist-content
+        img.artist-content__photo(src="img/artist.jpg" alt="asd" width="350" height="350")
+        .artist-content__inner
+            h1.artist-content__title
+                | David Bowie
+            .artist-content__desc
+                | Выпустив в первые годы своей деятельности альбом David Bowie и несколько синглов, Дэвид Боуи тем не менее стал известен широкой публике лишь осенью 1969 года, когда его песня «Space Oddity» достигла первой пятёрки в британском хит-параде. После трёх лет экспериментов он вновь появился на публике в 1972 году во время расцвета глэм-рока, создав яркий андрогинный образ персонажа по имени Зигги Стардаст. Его хит-сингл «Starman» из знаменитого альбома The Rise and Fall of Ziggy Stardust and the Spiders from Mars вошёл в первую десятку хит-парада Великобритании. В период относительно недолгого использования образа Зигги Стардаста Боуи часто применял музыкальные инновации и необычные визуальные постановки.
+                | 
+                | В 1975 году Боуи добился первого крупного успеха в Америке с синглом номер один «Fame», написанным в соавторстве с Джоном Ленноном и Карлосом Аломаром, и хит-альбомом Young Americans, стиль которого певец описал как «пластиковый соул» (англ. plastic soul). Звук альбома представляет собой радикальный сдвиг в музыкальном стиле Боуи, который первоначально оттолкнул многих британских фанатов певца[9]. Затем он оправдал ожидания своего лейбла и американских поклонников, выпустив минималистский альбом Low (1977) — первый из трёх дисков так называемой «Берлинской трилогии Боуи», записанных совместно с Брайаном Ино в течение последующих двух лет. Все три альбома вошли в пятёрку лучших хит-парада Великобритании и на долгое время снискали крайне положительные отзывы критиков.
+            button.artist-content__toggle-btn(type="button")
+                | Подробнее
+
+    .artist-materials-block.artist-materials-block_content_tracks
+        .content-header
+            h2.title.content-header__title
+                | Все треки
+
+            .content-header__controls
+                .content-header__search
+                    +local-search({
+                        mixin: "local-search_s_md js-tracks-local-search",
+                        selector: ".track-list__item[data-string]",
+                        text: "Поиск по названию"
+                    })
+        .track-list.track-list_view_artist-tracks#js-artist-tracks(data-uid="123")
+            - const tracks = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!", ]
+            - let n = 0
+            while n < 12
+                - const title = tracks[Math.round( Math.random() * (tracks.length - 1) )]
+                .track-list__item(data-string=title.toLocaleLowerCase())
+                    +track({
+                        img: `img/track-${Math.round( Math.random() + 1 )}.jpg`,
+                        title,
+                    })
+                - n++
+        button.artist-materials-block__load-btn#js-track-loader(type="button")
+            | Еще
+
+    .artist-materials-block.artist-materials-block_content_clips
+        .content-header
+            h2.title.content-header__title
+                | Все Клипы
+
+            .content-header__controls
+                .content-header__search
+                    +local-search({
+                        mixin: "local-search_s_md js-clips-local-search",
+                        selector: ".video-list__item[data-string]",
+                        text: "Поиск по названию"
+                    })
+        .video-list.video-list_view_artist-clips#js-artist-clips(data-uid="123")
+            - const clips = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!", ]
+            - n = 0
+            while n < 8
+                - const title = tracks[Math.round( Math.random() * (tracks.length - 1) )]
+                .video-list__item(data-string=title.toLocaleLowerCase())
+                    +video({
+                        img: `img/video-${Math.round( Math.random() + 1 )}.jpg`,
+                        title,
+                    })
+                - n++
+        button.artist-materials-block__load-btn#js-clip-loader(type="button")
+            | Еще
+
+append scripts

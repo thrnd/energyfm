@@ -1,0 +1,79 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Видео"
+    - isInner = true
+
+append content
+    +breadcrumps(["Видео"])
+
+    .content-header
+        h1.title.content-header__title
+            | Видео
+
+        .content-header__controls
+            .content-header__search
+                +local-search({
+                    mixin: "js-video-local-search",
+                    selector: ".video-list__item[data-string]",
+                })
+            .content-header__filter
+                input.date-time-component__hidden-input(type="hidden" data-items=".video-list__item[data-date]")
+                +date-time-component({ isReset: true })
+
+        .content-header__tags
+            +tags({ items: [
+                { text: "Все", isActive: true, },
+                { text: "Шоу с Черным Перцем" },
+                { text: "Joyстики" },
+                { text: "NRJNews" },
+                { text: "Пародии" },
+                { text: "Интервью" },
+                { text: "Шоу с Черным Перцем" },
+                { text: "Joyстики" },
+                { text: "NRJNews" },
+                { text: "Пародии" },
+                { text: "Интервью" },
+            ]})
+
+    - const videoTitles = ["Down By The River", "Федерико Феллини (Live @ Радио ENERGY)", "Little Big, Джиган, Gayazovs Brothers, Артур Пирожков, Pokrov, The Hatters - NRJ 15 лет в России!",];
+    - const videoDates = ["01.06.2022", "01.05.2022"];
+    .new-videos-slider.swiper-container
+        .video-list.video-list_view_slider.swiper-wrapper
+            .video-list__item.swiper-slide
+                +video({
+                    img: "img/video-2.jpg",
+                    width: 520,
+                    height: 292,
+                    title: "Down By The River",
+                    desc: "Milky Chance",
+                    date: "29.10.2021",
+                    isNew: true,
+                })
+            .video-list__item.swiper-slide
+                +video({
+                    img: "img/video-2.jpg",
+                    width: 520,
+                    height: 292,
+                    title: "Федерико Феллини (Live @ Радио ENERGY)",
+                    desc: "Galibri & Mavik",
+                    date: "29.10.2021",
+                    isNew: true,
+                })
+    #js-video-list.video-list
+        - let n = 0;
+        - let title;
+        - const desc = ["Galibri & Mavik Galibri & Mavik Galibri & Mavik Galibri & Mavik Galibri & Mavik", ""]
+        while n < 6
+            - title = videoTitles[ Math.round( Math.random() * 2 ) ];
+            - date = videoDates[ Math.round( Math.random() ) ];
+            .video-list__item(data-string=title.toLocaleLowerCase() data-date=date)
+                +video({
+                    img: `img/video-${ Math.round(Math.random() * 2) + 1 }.jpg`,
+                    title,
+                    desc: desc[ Math.round( Math.random() ) ],
+                    date,
+                })
+                - n++
+
+append scripts

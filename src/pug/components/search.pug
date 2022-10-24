@@ -1,0 +1,12 @@
+mixin search({ text = "" } = {})
+    form.search(action="#" method="GET")&attributes(attributes)
+        button.search__submit.page-header__btn(type="submit" aria-label="Искать")
+            +svg("search")(class="search__icon" width="20" height="20")
+
+        label.search__label
+            span.visually-hidden
+                | Найти трек на Like FM
+            input.search__input(type="text" name="q" value=text placeholder="Найти трек на Like FM")
+            .search__underline
+
+        button.search__close.page-header__btn(type="button" aria-label="Закрыть форму поиска")
